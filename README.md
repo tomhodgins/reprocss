@@ -1,6 +1,6 @@
 ![](http://i.imgur.com/HWpgrOP.png)
 
-# reprocss
+# reproCSS
 
 **A flexible CSS reprocessor using <style> tags**
 

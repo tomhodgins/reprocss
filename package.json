@@ -1,0 +1,28 @@
+{
+  "name": "reprocss",
+  "version": "0.0.1",
+  "description": "a flexible <style>-tag based CSS reprocessor",
+  "main": "reprocss.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomhodgins/reprocss.git"
+  },
+  "keywords": [
+    "css",
+    "css",
+    "reprocessor",
+    "js-in-css"
+  ],
+  "author": "Tommy Hodgins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomhodgins/reprocss/issues"
+  },
+  "homepage": "https://github.com/tomhodgins/reprocss#readme"
+}
