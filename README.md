@@ -1,10 +1,11 @@
+
 ![](http://i.imgur.com/HWpgrOP.png)
 
 # reproCSS
 
-**A flexible CSS reprocessor using <style> tags**
+**A flexible CSS reprocessor using `<style>` tags**
 
-Can you imagine if you could interpolate JS inside CSS with the `${}` syntax, and also control when and how frequently that CSS reprocessed with a process="" attribute on the `<style>` tag:
+Can you imagine if you could interpolate JS inside CSS with the `${}` syntax, and also control when and how frequently that CSS reprocessed with a `process=""` attribute on the `<style>` tag:
 
 ![](http://i.imgur.com/6SkRCIm.png)
 
@@ -24,13 +25,21 @@ Can you imagine if you could interpolate JS inside CSS with the `${}` syntax, an
 
 ## How to use reproCSS
 
+### Github
+
 Include the `reprocss.js` JavaScript plugin in your HTML:
 
 ```html
 <script src="reprocss.js"></script>
 ```
 
-The plugin is also a UMD module if you want to use the plugin inside JS modules.
+### npm
+
+If you are using reproCSS on NPM you can include it in your JS modules with a line like this:
+
+```javascript
+const reprocss = require('reprocss')
+```
 
 ## How to write reproCSSed CSS
 
@@ -108,5 +117,9 @@ Currently this plugin only supports `<style>` tags, but it may be possible to su
   }
 </style>
 ```
+
+## Demos
+
+- [Element Queries with reproCSS](test/element-queries.html)
 
 > Made with ♥ by [@innovati](http://twitter.com/innovati)

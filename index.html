@@ -111,13 +111,19 @@
 
 <h2 id=howto>How to use reproCSS</h2>
 
+<h3 id=github>Github</h3>
+
 <p>To view reproCSS on Github visit: <a href=https://github.com/tomhodgins/reprocss>github.com/tomhodgins/reprocss</a></p>
 
 <p>You can include the <code>reprocss.js</code> JavaScript plugin in your HTML:</p>
 
 <pre>&lt;script src="reprocss.js">&lt;/script></pre>
 
-<p>The plugin is also a UMD module if you want to use the plugin inside JS modules.</p>
+<h3 id=npm>npm</h3>
+
+<p>If you are using reproCSS on NPM you can include it in your JS modules with a line like this:</p>
+
+<pre>const reprocss = require('reprocss')</pre>
 
 <h2 id=writing>How to write reproCSSed CSS</h2>
 
@@ -177,6 +183,12 @@
     background: hsl(${demo.value.length}, 50%, 50%)
   }
 &lt;/style></pre>
+
+<h2 id=demos>Demos</h2>
+
+<ul>
+  <li><a href=test/element-queries.html>Element Queries with reproCSS</a>
+</ul>
 
 <footer>Made with &hearts; by <a href=http://twitter.com/innovati>@innovati</a></footer>
 
