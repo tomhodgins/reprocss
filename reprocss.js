@@ -4,7 +4,7 @@
   # reproCSS
   ## version 0.0.1
 
-  reproCSS is a CSS reprocessor that uses `<style>` tags and a `process=""` attribute.
+  reproCSS is a flexible CSS reprocessor that uses `<style>` tags and a `process=""` attribute.
 
   You can add the CSS you want reprocss.js to apply to your HTML in `<style>` tags with the following values on the `process` attribute:
 
@@ -13,14 +13,14 @@
   - `auto` runs every `resize`, `input`, and `click` event on window
   - any space-separated list of JS events you wish to listen for
 
-      <style process=none></style>
-      <style process=once></style>
-      <style process=auto></style>
+      <style process="none"></style>
+      <style process="once"></style>
+      <style process="auto"></style>
       <style process="touchstart scroll"></style>
 
-  To evaluate JavaScript inside the CSS as it's being reprocessed by reproCSS you can use the `${}` interpolation syntax. The following `<style>` tag would always ensure the `<div>` in this example was half of the window's height:
+  To evaluate JavaScript inside the CSS as it's being reprocessed by `reprocss.js` you can use the `${}` interpolation syntax. The following `<style>` tag would always ensure the `<div>` in this example was half of the window's height:
 
-      <style process=auto>
+      <style process="auto">
         div {
           height: calc(${innerHeight}px / 2);
         }
@@ -28,7 +28,7 @@
 
   When the browser is 1000px tall the `${innerHeight}` in our CSS will be output as `500`, leading to the following output:
 
-      <style process=auto>
+      <style process="auto">
         div {
           height: calc(500px / 2);
         }
@@ -36,7 +36,10 @@
 
   Currently this plugin only supports `<style>` tags, but it may be possible to support CSS loaded via `<link>` with a similar technique.
 
+  - https://github.com/tomhodgins/reprocss
+
   Author: Tommy Hodgins
+
   License: MIT
 
 */

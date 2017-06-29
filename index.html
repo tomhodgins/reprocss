@@ -100,6 +100,15 @@
 &lt;style process="auto">&lt;/style>
 &lt;style process="touchstart mousedown">&lt;/style></pre>
 
+<p>You can add the CSS you want <code>reprocss.js</code> to apply to your HTML in <code>&lt;style></code> tags with the following values on the <code>process</code> attribute:
+
+<ul>
+  <li><code>none</code> means no reprocessing
+  <li><code>once</code> means process immediately and never again
+  <li><code>auto</code> runs every <code>resize</code>, <code>input</code>, and <code>click</code> event on window
+  <li>any space-separated list of JS events you wish to listen for
+</ul>
+
 <h2 id=howto>How to use reproCSS</h2>
 
 <p>Include the <code>reprocss.js</code> JavaScript plugin in your HTML:</p>
@@ -107,6 +116,26 @@
 <pre>&lt;script src="reprocss.js">&lt;/script></pre>
 
 <p>The plugin is also a UMD module if you want to use the plugin inside JS modules.</p>
+
+<h2 id=writing>How to write reproCSSed CSS</h2>
+
+<p>To evaluate JavaScript inside the CSS as it's being reprocessed by <code>reprocss.js</code> you can use the <code>${}</code> interpolation syntax. The following <code>&lt;style></code> tag would always ensure the <code>&lt;div></code> in this example was half of the window's height:</p>
+
+<pre>&lt;style process="auto">
+  div {
+    height: calc(${innerHeight}px / 2);
+  }
+&lt;/style></pre>
+
+<p>When the browser is 1000px tall the <code>${innerHeight}</code> in our CSS will be output as <code>500</code>, leading to the following output:</p>
+
+<pre>&lt;style process="auto">
+  div {
+    height: calc(500px / 2);
+  }
+&lt;/style></pre>
+
+<p>Currently this plugin only supports <code>&lt;style></code> tags, but it may be possible to support CSS loaded via <code>&lt;link></code> with a similar technique.</p>
 
 <h2 id=examples>Examples</h2>
 

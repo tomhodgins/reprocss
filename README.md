@@ -15,6 +15,12 @@ Can you imagine if you could interpolate JS inside CSS with the `${}` syntax, an
 <style process="touchstart mousedown"></style>
 ```
 
+  You can add the CSS you want reprocss.js to apply to your HTML in `<style>` tags with the following values on the `process` attribute:
+
+  - `none` means no reprocessing
+  - `once` means process immediately and never again
+  - `auto` runs every `resize`, `input`, and `click` event on window
+  - any space-separated list of JS events you wish to listen for
 
 ## How to use reproCSS
 
@@ -26,7 +32,29 @@ Include the `reprocss.js` JavaScript plugin in your HTML:
 
 The plugin is also a UMD module if you want to use the plugin inside JS modules.
 
-![](http://i.imgur.com/FZFXpmg.png)
+## How to write reproCSSed CSS
+
+To evaluate JavaScript inside the CSS as it's being reprocessed by `reprocss.js` you can use the `${}` interpolation syntax. The following `<style>` tag would always ensure the `<div>` in this example was half of the window's height:
+
+```html
+<style process="auto">
+  div {
+    height: calc(${innerHeight}px / 2);
+  }
+</style>
+```
+
+When the browser is 1000px tall the `${innerHeight}` in our CSS will be output as `500`, leading to the following output:
+
+```html
+<style process="auto">
+  div {
+    height: calc(500px / 2);
+  }
+</style>
+```
+
+Currently this plugin only supports `<style>` tags, but it may be possible to support CSS loaded via `<link>` with a similar technique.
 
 ## Examples
 
@@ -80,7 +108,5 @@ The plugin is also a UMD module if you want to use the plugin inside JS modules.
   }
 </style>
 ```
-
-![](http://i.imgur.com/jdL500S.png)
 
 > Made with ♥ by [@innovati](http://twitter.com/innovati)
