@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="http://staticresource.com/sixty.css" rel=stylesheet>
+<title>reproCSS element queries</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  h3 {
+    margin-top: 1em;
+  }
+  div,
+  input:not([type=button]) {
+    padding: 1em;
+    margin: 1em 0;
+    border: 1px solid;
+  }
+  input:not([type=button]) {
+    width: 100%;
+  }
+  [id*="Width"] {
+    display: inline-block;
+    min-width: auto;
+    max-width: 100%;
+    overflow: auto;
+    resize: horizontal;
+  }
+  [id*="Height"] {
+    min-height: auto;
+    max-height: 300px;
+    overflow: auto;
+    resize: vertical;
+  }
+  [id*="AspectRatio"],
+  #orientation {
+    display: inline-block;
+    min-width: 100px;
+    min-height: 100px;
+    overflow: auto;
+    resize: both;
+  }
+  [id*="Scroll"] {
+    padding: 0;
+  }
+  [id*="Scroll"] p {
+    margin: .25em;
+    font-size: 3vw;
+  }
+  [id*="ScrollX"] {
+    overflow-x: scroll;
+  }
+  [id*="ScrollX"] p {
+    width: 200%;
+  }
+  [id*="ScrollY"] {
+    max-height: 4em;
+    overflow-y: scroll;
+  }
+  [id*="ScrollY"] p {
+    height: 200%;
+  }
+</style>
+
+<h1>Element Queries</h1>
+<h2>with <a href=http://github.com/tomhodgins/reprocss>reproCSS</a></h2>
+
+<h3>Min-Width</h3>
+<div id="minWidth">Min Width (drag to resize)</div>
+
+<h3>Max-Width</h3>
+<div id="maxWidth">Max Width (drag to resize)</div>
+
+<h3>Min-Height</h3>
+<div id="minHeight">Min Height (drag to resize)</div>
+
+<h3>Max-Height</h3>
+<div id="maxHeight">Max Height (drag to resize)</div>
+
+<h3>Min-Characters</h3>
+<div id="minCharacters" contenteditable>Min Characters (type in here)</div>
+
+<h3>Min-Characters (on form inputs)</h3>
+<input id="minCharactersForm" placeholder="Min Characters on form inputs">
+
+<h3>Max-Characters</h3>
+<div id="maxCharacters" contenteditable>Max Characters (type in here)</div>
+
+<h3>Max-Characters (on form inputs)</h3>
+<input id="maxCharactersForm" placeholder="Max Characters on form inputs">
+
+<h3>Min-Children</h3>
+<div id="minChildren">Min Children
+</div>
+<input type=button onclick="previousElementSibling.appendChild(document.createElement('div'));" value="Add Child">
+
+<h3>Max-Children</h3>
+<div id="maxChildren">Max Children
+</div>
+<input type=button onclick="previousElementSibling.appendChild(document.createElement('div'))" value="Add Child">
+
+<h3>Min-Scroll-X</h3>
+<div id="minScrollX">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam distinctio, doloremque, iure magni neque sed natus eveniet, atque tempora aliquid dolores deleniti impedit amet doloribus voluptatibus vel dolorem sit qui.</p>
+</div>
+
+<h3>Max-Scroll-X</h3>
+<div id="maxScrollX">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam distinctio, doloremque, iure magni neque sed natus eveniet, atque tempora aliquid dolores deleniti impedit amet doloribus voluptatibus vel dolorem sit qui.</p>
+</div>
+
+<h3>Min-Scroll-Y</h3>
+<div id="minScrollY">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam distinctio, doloremque, iure magni neque sed natus eveniet, atque tempora aliquid dolores deleniti impedit amet doloribus voluptatibus vel dolorem sit qui.</p>
+</div>
+
+<h3>Max-Scroll-Y</h3>
+<div id="maxScrollY">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam distinctio, doloremque, iure magni neque sed natus eveniet, atque tempora aliquid dolores deleniti impedit amet doloribus voluptatibus vel dolorem sit qui.</p>
+</div>
+
+<h3>Min-Aspect-Ratio</h3>
+<div id="minAspectRatio">(drag to resize)</div>
+
+<h3>Max-Aspect-Ratio</h3>
+<div id="maxAspectRatio">(drag to resize)</div>
+
+<h3>Orientation</h3>
+<div id="orientation"></div>
+
+<style id=example process="resize input click mousemove touchmove">
+  /* @element #minWidth and (min-width: 500px) {} */
+  /* #minWidth[test="this.offsetWidth > 500"] */
+  ${minWidth.offsetWidth > 500 && '#minWidth'} {
+    background: lime;
+  }
+
+  /* @element #maxWidth and (max-width: 500px) {} */
+  /* #maxWidth[test="this.offsetWidth < 500"] */
+  ${maxWidth.offsetWidth < 500 && '#maxWidth'} {
+    background: lime;
+  }
+
+  /* @element #minHeight and (min-height: 100px) {} */
+  /* #minHeight[test="this.offsetHeight > 100"] */
+  ${minHeight.offsetHeight > 100 && '#minHeight'} {
+    background: lime;
+  }
+
+  /* @element #maxHeight and (max-height: 100px) {} */
+  /* .max-height[test="this.offsetHeight < 100"] */
+  ${maxHeight.offsetHeight < 100 && '#maxHeight'} {
+    background: lime;
+  }
+
+  /* @element #minCharacters and (min-characters: 5) {} */
+  /* #minCharacters[test="this.innerHTML.length > 5"] */
+  ${minCharacters.innerHTML.length > 5 && '#minCharacters'} {
+    background: lime;
+  }
+
+  /* @element #maxCharacters and (max-characters: 5) {} */
+  /* #maxCharacters[test="this.innerHTML.length < 5"] */
+  ${maxCharacters.innerHTML.length < 5 && '#maxCharacters'} {
+    background: lime;
+  }
+
+  /* @element #minCharactersForm and (min-characters: 5) {} */
+  /* #minCharactersForm[test="this.value.length > 5"] */
+  ${minCharactersForm.value.length > 5 && '#minCharactersForm'} {
+    background: lime;
+  }
+
+  /* @element #maxCharactersForm and (max-characters: 5) {} */
+  /* #maxCharactersForm[test="this.value.length < 5"] */
+  ${maxCharactersForm.value.length < 5 && '#maxCharactersForm'} {
+    background: lime;
+  }
+
+  /* @element #minChildren and (min-children: 3) {} */
+  /* #minChildren[test="this.children.length > 3"] */
+  ${minChildren.children.length > 3 && '#minChildren'} {
+    background: lime;
+  }
+
+  /* @element #maxChildren and (max-children: 3) {} */
+  /* #maxChildren[test="this.children.length < 3"] */
+  ${maxChildren.children.length < 3 && '#maxChildren'} {
+    background: lime;
+  }
+
+  /* @element #minScrollX and (min-scroll-x: 100px) {} */
+  /* #minScrollX[test="this.scrollLeft > 100"] */
+  ${minScrollX.scrollLeft > 100 && '#minScrollX'} {
+    background: lime;
+  }
+
+  /* @element #maxScrollX and (max-scroll-x: 100px) {} */
+  /* #maxScrollX[test="this.scrollLeft < 100"] */
+  ${maxScrollX.scrollLeft < 100 && '#maxScrollX'} {
+    background: lime;
+  }
+
+  /* @element #minScrollY and (min-scroll-y: 50px) {} */
+  /* #minScrollY[test="this.scrollTop > 50"] */
+  ${minScrollY.scrollTop > 50 && '#minScrollY'} {
+    background: lime;
+  }
+
+  /* @element #maxScrollY and (max-scroll-y: 50px) {} */
+  /* #maxScrollY[test="this.scrollTop < 50"] */
+  ${maxScrollY.scrollTop < 50 && '#maxScrollY'} {
+    background: lime;
+  }
+
+  /* @element #minAspectRatio and (min-aspect-ratio: 1/1) {} */
+  /* #minAspectRatio[test="this.offsetWidth/this.offsetHeight > 16/9"] */
+  ${minAspectRatio.offsetWidth/minAspectRatio.offsetHeight > 16/9 && '#minAspectRatio'} {
+    background: lime;
+  }
+
+  /* @element #maxAspectRatio and (max-aspect-y: 1/1) {} */
+  /* #maxAspectRatio[test="this.offsetWidth/this.offsetHeight < 16/9"] */
+  ${maxAspectRatio.offsetWidth/maxAspectRatio.offsetHeight < 16/9 && '#maxAspectRatio'} {
+    background: lime;
+  }
+
+  /* @element #orientation and (orientation: portrait) {} */
+  /* #orientation[test="this.offsetWidth < this.offsetHeight"] */
+  ${orientation.offsetWidth < orientation.offsetHeight && '#orientation'} {
+    background: orchid;
+  }
+
+  /* @element #orientation and (orientation: square) {} */
+  /* #orientation[test="this.offsetWidth == this.offsetHeight"] */
+  ${orientation.offsetWidth == orientation.offsetHeight && '#orientation'} {
+    background: darkturquoise;
+  }
+
+  /* @element #orientation and (orientation: landscape) {} */
+  /* #orientation[test="this.offsetWidth > this.offsetHeight"] */
+  ${orientation.offsetWidth > orientation.offsetHeight && '#orientation'} {
+    background: greenyellow;
+  }
+</style>
+
+<script>
+Array.from(document.querySelectorAll('[id*="Scroll"]'), tag => {
+  tag.addEventListener('scroll', e => {
+    reprocss.apply(example.getAttribute('data-reprocss'))
+  })
+})
+</script>
+
+<script src=../reprocss.js></script>

@@ -62,7 +62,7 @@
   } else {
 
     // Browser globals (root is window)
-    root.cursory = factory()
+    root.reprocss = factory()
 
   }
 
