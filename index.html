@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>reproCSS</title>
+
+<style process=auto>
+  * {
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-kerning: auto;
+  }
+  html {
+    font-size: 12pt;
+    line-height: 1.4;
+    font-weight: 400;
+    font-family: sans-serif;
+  }
+  body {
+    padding: 1em;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  code,
+  pre,
+  blockquote {
+    padding: .1em .3em;
+    background: rgba(0,0,0,.1);
+  }
+  code,
+  pre {
+    font-family: monospace;
+  }
+  pre {
+    padding: 1em;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin: 2em 0 .5em 0;
+    line-height: 1.2;
+    letter-spacing: -.02em;
+  }
+  [class*=float-] {
+    margin: 0 auto 1em auto;
+    display: block;
+    width: auto;
+    max-width: 100%;
+    clear: both;
+  }
+  footer {
+    padding: 2em 0;
+    opacity: .4;
+    transition: opacity .2s ease-in-out;
+  }
+  footer:hover {
+    opacity: 1;
+  }
+  p {
+    font-size: 14pt;
+  }
+  @media (min-width: 600px) {
+    h1 { font-size: 300%; }
+    h2 { font-size: 200%; }
+    h3 { font-size: 160%; }
+    h4 { font-size: 140%; }
+    h5 { font-size: 120%; }
+    h6 { font-size: 110%; }
+    [class*=float-] {
+      max-width: 40%;
+    }
+    .float-left {
+      float: left;
+      margin: 0 1em .5em 0;
+    }
+    .float-right {
+      float: right;
+      margin: 0 0 .5em 1em;
+    }
+  }
+</style>
+
+<h1>reproCSS</h1>
+
+<p><strong>A CSS reprocessor using <code>&lt;style></code> tags</strong></p>
+<p>Can you imagine if you could interpolate JS inside CSS with the <code>${}</code> syntax, and also control when and how frequently that CSS reprocessed with a <code>process=""</code> attribute on the <code>&lt;style></code> tag:</p>
+
+<pre>&lt;style process="none">&lt;/style>
+&lt;style process="once">&lt;/style>
+&lt;style process="auto">&lt;/style>
+&lt;style process="touchstart mousedown">&lt;/style></pre>
+
+<h2 id=howto>How to use reproCSS</h2>
+
+<p>Include the <code>reprocss.js</code> JavaScript plugin in your HTML:</p>
+
+<pre>&lt;script src="reprocss.js">&lt;/script></pre>
+
+<p>The plugin is also a UMD module if you want to use the plugin inside JS modules.</p>
+
+<h2 id=examples>Examples</h2>
+
+<h3 id=pseudo>Interpolating JS-supplied values in CSS <code>content:;</code></h3>
+<pre>&lt;div>Hello&lt;/div>
+
+&lt;script>
+  var user = 'Username'
+&lt;/script>
+
+&lt;style process="once">
+  div:after {
+    content: ' ${user}';
+  }
+&lt;/style></pre>
+
+<h3 id=element-queries>Element Queries via a JS Selector Resolver</h3>
+<pre>&lt;div id="demo">
+  &lt;p>Hello&lt;/p>
+&lt;/div>
+
+&lt;style process="resize">
+  ${demo.offsetWidth > 400 && "#demo"} {
+    background: lime;
+  }
+  ${demo.offsetWidth > 400 && "#demo"} p {
+    color: red;
+  }
+&lt;/style></pre>
+
+
+<h3 id=interpolation>JS interpolation in CSS</h3>
+<pre>&lt;textarea id="demo">&lt;/textarea>
+
+&lt;style process="input">
+  #demo {
+    background: hsl(${demo.value.length}, 50%, 50%)
+  }
+&lt;/style></pre>
+
+<footer>Made with &hearts; by <a href=http://twitter.com/innovati>@innovati</a></footer>
+
+<script src=reprocss.js></script>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>reproCSS test</title>
+
+<h1>reproCSS Tests</h1>
+
+<style process="none">
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    min-height: 100%;
+  }
+</style>
+
+<h2>JS interpolation inside <code>content:;</code></h2>
+
+<div>This is</div>
+
+<script>
+  var name = 'reproCSS'
+</script>
+
+<style process="once">
+  html {
+    border: calc(${innerWidth}px / 100) solid lime;
+  }
+  div:after {
+    content: ' ${name}';
+  }
+</style>
+
+<h2>Live Textarea Styles</h2>
+
+<textarea id=demo></textarea>
+
+<style process="auto">
+  textarea {
+    color: white;
+    font-size: 20pt;
+    font-weight: bolder;
+    width: 100%;
+    height: calc(${innerHeight}px / 3);
+  }
+</style>
+
+<style process="input">
+  textarea {
+    background: hsl(${demo.value.length * 10}, 50%, 50%)
+  }
+</style>
+
+<h2>Element Queries (max-characters: 0)</h2>
+<input id=example>
+<style process="input">
+  ${example.value < 1 && '#example'} {
+    background: lime;
+  }
+</style>
+
+<script src=../reprocss.js></script>
