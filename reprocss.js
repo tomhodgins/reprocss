@@ -2,7 +2,7 @@
 /*
 
   # reproCSS
-  ## version 0.0.2
+  ## version 0.0.3
 
   reproCSS is a flexible CSS reprocessor that uses `<style>` tags and a `process=""` attribute.
 
@@ -17,6 +17,10 @@
       <style process="once"></style>
       <style process="auto"></style>
       <style process="touchstart scroll"></style>
+
+  If you are using reproCSS with custom events, you may also optionally use a `selector` attribute specify a list of one or more CSS selectors you would like to add event listeners for. If no `selector` attribute is found all custom events will be applied to window.
+
+      <style process="click" selector="#any, .css, [selector]"></style>
 
   To evaluate JavaScript inside the CSS as it's being reprocessed by `reprocss.js` you can use the `${}` interpolation syntax. The following `<style>` tag would always ensure the `<div>` in this example was half of the window's height:
 
@@ -101,13 +105,15 @@
 
     let trigger = tag.getAttribute('process')
 
+    let number = tag.getAttribute('data-reprocss')
+
     switch (trigger) {
 
       // process="none"
       case "none":
 
         // Populate tag with original CSS code
-        tag.innerHTML = reprocss.style[tag.getAttribute('data-reprocss')]
+        tag.innerHTML = reprocss.style[number]
 
         break;
 
@@ -115,7 +121,7 @@
       case "once":
 
         // Populate tag immediately with evaluated CSS code
-        reprocss.apply(tag.getAttribute('data-reprocss'))
+        reprocss.apply(number)
 
         break;
 
@@ -123,21 +129,21 @@
       case "auto":
 
         // Populate tag immediately with evaluated CSS code
-        reprocss.apply(tag.getAttribute('data-reprocss'))
+        reprocss.apply(number)
 
         // Listen on window resize
         window.addEventListener('resize', ()=> {
-          reprocss.apply(tag.getAttribute('data-reprocss'))
+          reprocss.apply(number)
         })
 
         // Listen on window input
         window.addEventListener('input', ()=> {
-          reprocss.apply(tag.getAttribute('data-reprocss'))
+          reprocss.apply(number)
         })
 
         // Listen on window click
         window.addEventListener('click', ()=> {
-          reprocss.apply(tag.getAttribute('data-reprocss'))
+          reprocss.apply(number)
         })
 
         break;
@@ -145,21 +151,53 @@
       // For any other process="" values
       default:
 
-        // Populate tag immediately with evaluated CSS code
-        reprocss.apply(tag.getAttribute('data-reprocss'))
-
         // Turn space-separated lists into an array
         let triggers = trigger.split(' ')
 
-        // For each custom event we find
-        Array.from(triggers, event => {
+        let selectorAttr = tag.getAttribute('selector')
 
-          // Add a new event listener to window for that event
-          window.addEventListener(event, ()=> {
-            reprocss.apply(tag.getAttribute('data-reprocss'))
+        // if selector="" attribute has a value
+        if (selectorAttr) {
+
+          // split the value of selector="" into an array of selectors
+          let selectors = selectorAttr.split(',')
+
+          // For each selector
+          Array.from(selectors, selector => {
+
+            // Find all tags in document that match
+            Array.from(document.querySelectorAll(selector), element => {
+
+              Array.from(triggers, event => {
+
+                // Add a new event listener to window for that event
+                element.addEventListener(event, ()=> {
+                  reprocss.apply(number)
+                })
+
+              })
+
+            })
+
           })
 
-        })
+        // if no selector="" attribute found we apply events to window
+        } else {
+
+          // Populate tag immediately with evaluated CSS code
+          reprocss.apply(number)
+
+          // For each custom event we find
+          Array.from(triggers, event => {
+
+            // Add a new event listener to window for that event
+            window.addEventListener(event, ()=> {
+              reprocss.apply(number)
+            })
+
+          })
+
+        }
 
         break;
 

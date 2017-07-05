@@ -16,6 +16,12 @@ Can you imagine if you could interpolate JS inside CSS with the `${}` syntax, an
 <style process="touchstart mousedown"></style>
 ```
 
+If you are using reproCSS with custom events, you may also optionally use a `selector` attribute specify a list of one or more CSS selectors you would like to add event listeners for. If no `selector` attribute is found all custom events will be applied to window.
+
+```
+<style process="click" selector="#any, .css, [selector]"></style>
+```
+
   You can add the CSS you want reprocss.js to apply to your HTML in `<style>` tags with the following values on the `process` attribute:
 
   - `none` means no reprocessing

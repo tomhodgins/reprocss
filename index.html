@@ -48,13 +48,6 @@
   h1 {
     margin-top: 0;
   }
-  [class*=float-] {
-    margin: 0 auto 1em auto;
-    display: block;
-    width: auto;
-    max-width: 100%;
-    clear: both;
-  }
   footer {
     opacity: .4;
     padding: 2em 0;
@@ -64,7 +57,8 @@
   footer:hover {
     opacity: 1;
   }
-  p {
+  p,
+  li {
     font-size: 14pt;
   }
   @media (min-width: 600px) {
@@ -74,17 +68,6 @@
     h4 { font-size: 140%; }
     h5 { font-size: 120%; }
     h6 { font-size: 110%; }
-    [class*=float-] {
-      max-width: 40%;
-    }
-    .float-left {
-      float: left;
-      margin: 0 1em .5em 0;
-    }
-    .float-right {
-      float: right;
-      margin: 0 0 .5em 1em;
-    }
   }
 </style>
 
@@ -99,6 +82,10 @@
 &lt;style process="once">&lt;/style>
 &lt;style process="auto">&lt;/style>
 &lt;style process="touchstart mousedown">&lt;/style></pre>
+
+<p>If you are using reproCSS with custom events, you may also optionally use a <code>selector</code> attribute specify a list of one or more CSS selectors you would like to add event listeners for. If no <code>selector</code> attribute is found all custom events will be applied to window.</p>
+
+<pre>&lt;style process="click" selector="#any, .css, [selector]">&lt;/style></pre>
 
 <p>You can add the CSS you want <code>reprocss.js</code> to apply to your HTML in <code>&lt;style></code> tags with the following values on the <code>process</code> attribute:
 
