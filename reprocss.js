@@ -132,17 +132,17 @@
         reprocss.apply(number)
 
         // Listen on window resize
-        window.addEventListener('resize', ()=> {
+        window.addEventListener('resize', () => {
           reprocss.apply(number)
         })
 
         // Listen on window input
-        window.addEventListener('input', ()=> {
+        window.addEventListener('input', () => {
           reprocss.apply(number)
         })
 
         // Listen on window click
-        window.addEventListener('click', ()=> {
+        window.addEventListener('click', () => {
           reprocss.apply(number)
         })
 
@@ -191,7 +191,7 @@
           Array.from(triggers, event => {
 
             // Add a new event listener to window for that event
-            window.addEventListener(event, ()=> {
+            window.addEventListener(event, () => {
               reprocss.apply(number)
             })
 
