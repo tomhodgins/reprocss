@@ -201,7 +201,7 @@ ${aspectRatio('iframe', 16/9)}
 
 #### demo
 
-- [Aspect Ratio Mixin Demo](test/aspect-ratio-mixin.html)
+- [Aspect Ratio Mixin Demo](https://tomhodgins.github.io/reprocss/test//aspect-ratio-mixin.html)
 
 
 ### XPath Selector Mixin
@@ -233,7 +233,7 @@ ${xpath('//*', `
 
 #### demo
 
-- [XPath Selector Mixin Demo](test/xpath-selector-mixin.html)
+- [XPath Selector Mixin Demo](https://tomhodgins.github.io/reprocss/test//xpath-selector-mixin.html)
 
 
 ### Auto Expand Mixin
@@ -254,7 +254,7 @@ ${autoExpand('textarea', 'height')}
 
 #### demo
 
-- [Auto Expand Mixin Demo](test/auto-expand-mixin.html)
+- [Auto Expand Mixin Demo](https://tomhodgins.github.io/reprocss/test//auto-expand-mixin.html)
 
 
 > Made with ♥ by [@innovati](http://twitter.com/innovati)
