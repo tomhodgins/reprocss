@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>Auto Expand mixin for reproCSS</title>
+
+<h1>Auto Expand Mixin Test</h1>
+
+<textarea>Auto Expand 'Height' Test</textarea>
+
+<input value="Auto Expand 'Width' Test">
+
+<style>
+  input,
+  textarea {
+    display: block;
+    margin: 1em;
+    font-size: 14pt;
+    padding: .5em;
+  }
+</style>
+
+<style process=auto>
+
+  ${autoExpand('textarea', 'height')}
+
+  ${autoExpand('input', 'width')}
+
+</style>
+
+<script src="../mixins/auto-expand.js"></script>
+<script src="../reprocss.js"></script>

@@ -39,6 +39,7 @@
   }
   pre {
     padding: 1em;
+    white-space: pre-wrap;
   }
   h1, h2, h3, h4, h5, h6 {
     margin: 2em 0 .5em 0;
@@ -175,6 +176,130 @@
 
 <ul>
   <li><a href=test/element-queries.html>Element Queries with reproCSS</a>
+  <li><a href=https://codepen.io/tomhodgins/pen/ZyraEQ>Min/Max Font Size</a>
+  <li><a href=https://codepen.io/tomhodgins/pen/QgQqwx>Attribute Values as Numbers</a>
+  <li><a href=https://codepen.io/tomhodgins/pen/MoQmdY>Regex Search on Attribute Value</a>
+  <li><a href=https://codepen.io/tomhodgins/pen/MoQmLY>Cursor Tracking</a>
+  <li><a href=https://codepen.io/tomhodgins/pen/awqWNz>Scalable Iframe</a>
+</ul>
+
+<ul>
+  <li><a href=https://codepen.io/search/pens/?q=reprocss>View reproCSS demos on CodePen</a>
+</ul>
+
+
+<h2 id=mixins>Mixins</h2>
+
+<p>Writing mixins for reproCSS is easy, any JavaScript function that outputs code that can be used in CSS can be called from anywhere in the stylesheet reproCSS is processing using JS interpolation with <code>${}</code>.</p>
+
+<p>An example of a common mixin template might look like this:</p>
+
+<pre>function mixin(selectorList, rule) {
+
+  // Find all tags in document matching selector list
+  var tag = document.querySelectorAll(selectorList)
+
+  // Start with an empty string for the style
+  var style = ''
+
+  // Being counting tags at 0
+  var count = 0
+
+  // For each tag in the document matching our selector list
+  for (var i = 0; i &lt; tag.length; i++) {
+
+    // Create an identifier based on the selector
+    var attr = btoa(selectorList).replace(/=/g, '')
+
+    // Mark tag with the name of our mixin, the identifier, and tag count
+    tag[i].setAttribute('data-mixin-' + attr, count)
+
+    // Add a new CSS rule based on the attribute and supplied CSS to our style
+    style += '\n[data-mixin-' + attr + '="' + count + '"] {\n'
+             + '  ' + rule + '\n'
+             + '}\n'
+
+    // Increment the tag counter
+    count++
+
+  }
+
+  // return all generated styles for the tag(s), selector(s), and rule(s) given
+  return style
+
+}</pre>
+
+<p>If you were going to create a mixin starting from the template above the first thing you'd want to do is change the function name (currently <code>mixin()</code>) to something unique, as well as update the mentions of <code>mixin</code> inside the mixin logic where it's used to name the elements the mixin is styling, <code>data-mixin-</code>.</p>
+
+<p>Once you have changed the name of the function, you can pass a CSS selector or a list of CSS selectors into to the plugin, along with CSS properties and values as a string to be processed and added to new rules. This basic template can be extended in many ways to support different things. Here are some examples of reproCSS mixins and helper functions:</p>
+
+<h3 id=aspect-ration-mixin>Aspect Ratio Mixin</h3>
+
+<p>This mixin allows you to define an aspect ratio for elements.</p>
+
+<h4>syntax</h4>
+
+<pre>${aspectRatio('iframe', 16/9)}</pre>
+
+<h4>output</h4>
+
+<pre>/* aspectRatio(iframe, 1.77) */
+[data-aspect-ratio-unique=0] {
+  height: 503px;
+}</pre>
+
+<h4>demo</h4>
+
+<ul>
+  <li><a href=test/aspect-ratio-mixin.html>Aspect Ratio Mixin Demo</a>
+</ul>
+
+
+<h3 id=xpath-selector-mixin>XPath Select Mixin</h3>
+
+<p>This mixin allows you to use XPath as a selector for CSS rules.</p>
+
+<h4>syntax</h4>
+
+<pre>${xpath('//*', `
+  border: 1px solid red;
+`)}</pre>
+
+<h4>outpue</h4>
+
+<pre>/*
+
+//* {
+  border: 1px solid red;
+}
+
+*/
+[data-xpath-unique=0] {
+  border: 1px solid red;
+}</pre>
+
+<h4>demo</h4>
+
+<ul>
+  <li><a href=test/xpath-selector-mixin.html>XPath Selector Mixin Demo</a>
+</ul>
+
+<h3 id=auto-expand-mixin>Auto Expand Mixin</h3>
+
+<p>This mixin lets you choose between auto-expanding an element's width and height to match its <code>scrollWidth</code> or <code>scrollHeight</code>. Available keywords are <code>width,</code>, <code>height</code>, and <code>both</code>.</p>
+
+<h4>syntax</h4>
+
+<pre>${autoExpand('textarea', 'height')}</pre>
+
+<h4>output</h4>
+
+<pre>/* autoExpand('textarea', 'height') */</pre>
+
+<h4>demo</h4>
+
+<ul>
+  <li><a href=test/auto-expand-mixin.html>Auto Expand Mixin Demo</a>
 </ul>
 
 <footer>Made with &hearts; by <a href=http://twitter.com/innovati>@innovati</a></footer>

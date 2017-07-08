@@ -78,10 +78,10 @@
 
   reprocss.style = []
 
-  reprocss.load = () => {
+  reprocss.load = function() {
 
     // Find all <style process=""> tags in document
-    Array.from(document.querySelectorAll('style[process]'), tag => {
+    Array.from(document.querySelectorAll('style[process]'), function(tag) {
 
       // Mark tag with data-reprocss="" attribute and current tag count
       tag.setAttribute('data-reprocss', reprocss.count)
@@ -95,7 +95,7 @@
 
   }
 
-  reprocss.process = tag => {
+  reprocss.process = function(tag) {
 
     // Save original CSS code in the reprocss.style array
     reprocss.style.push(tag.innerHTML)
@@ -132,17 +132,17 @@
         reprocss.apply(number)
 
         // Listen on window resize
-        window.addEventListener('resize', () => {
+        window.addEventListener('resize', function() {
           reprocss.apply(number)
         })
 
         // Listen on window input
-        window.addEventListener('input', () => {
+        window.addEventListener('input', function() {
           reprocss.apply(number)
         })
 
         // Listen on window click
-        window.addEventListener('click', () => {
+        window.addEventListener('click', function() {
           reprocss.apply(number)
         })
 
@@ -163,15 +163,15 @@
           let selectors = selectorAttr.split(',')
 
           // For each selector
-          Array.from(selectors, selector => {
+          Array.from(selectors, function(selector) {
 
             // Find all tags in document that match
-            Array.from(document.querySelectorAll(selector), element => {
+            Array.from(document.querySelectorAll(selector), function(element) {
 
-              Array.from(triggers, event => {
+              Array.from(triggers, function(event) {
 
                 // Add a new event listener to window for that event
-                element.addEventListener(event, ()=> {
+                element.addEventListener(event, function() {
                   reprocss.apply(number)
                 })
 
@@ -188,10 +188,10 @@
           reprocss.apply(number)
 
           // For each custom event we find
-          Array.from(triggers, event => {
+          Array.from(triggers, function(event) {
 
             // Add a new event listener to window for that event
-            window.addEventListener(event, () => {
+            window.addEventListener(event, function() {
               reprocss.apply(number)
             })
 
@@ -205,13 +205,13 @@
 
   }
 
-  reprocss.apply = number => {
+  reprocss.apply = function(number) {
 
     // Locate the corresponding `<style>` tag in DOM
     let tag = document.querySelectorAll('style[data-reprocss]')[number]
 
     // Evaluate CSS code for this tag
-    let css = reprocss.style[number].replace(/\$\{([^\}]*)\}/g, (string, match) => {
+    let css = reprocss.style[number].replace(/\$\{([^\}]*)\}/g, function(string, match) {
 
       let func = new Function('return '+match)
 

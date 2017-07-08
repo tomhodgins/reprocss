@@ -127,5 +127,134 @@ Currently this plugin only supports `<style>` tags, but it may be possible to su
 ## Demos
 
 - [Element Queries with reproCSS](test/element-queries.html)
+- [Min/Max Font Size](https://codepen.io/tomhodgins/pen/ZyraEQ)
+- [Attribute Values as Numbers](https://codepen.io/tomhodgins/pen/QgQqwx)
+- [Regex Search on Attribute Value](https://codepen.io/tomhodgins/pen/MoQmdY)
+- [Cursor Tracking](https://codepen.io/tomhodgins/pen/MoQmLY)
+- [Scalable Iframe](https://codepen.io/tomhodgins/pen/awqWNz)
+
+- [View reproCSS demos on CodePen](https://codepen.io/search/pens/?q=reprocss)
+
+## Mixins
+
+Writing mixins for reproCSS is easy, any JavaScript function that outputs code that can be used in CSS can be called from anywhere in the stylesheet reproCSS is processing using JS interpolation with `${}`.
+
+An example of a common mixin template might look like this:
+
+```javascript
+function mixin(selectorList, rule) {
+
+  // Find all tags in document matching selector list
+  var tag = document.querySelectorAll(selectorList)
+
+  // Start with an empty string for the style
+  var style = ''
+
+  // Being counting tags at 0
+  var count = 0
+
+  // For each tag in the document matching our selector list
+  for (var i=0; i<tag.length; i++) {
+
+    // Create an identifier based on the selector
+    var attr = btoa(selectorList).replace(/=/g, '')
+
+    // Mark tag with the name of our mixin, the identifier, and tag count
+    tag[i].setAttribute('data-mixin-' + attr, count)
+
+    // Add a new CSS rule based on the attribute and supplied CSS to our style
+    style += '\n[data-mixin-' + attr + '="' + count + '"] {\n'
+             + '  ' + rule + '\n'
+             + '}\n'
+
+    // Increment the tag counter
+    count++
+
+  }
+
+  // return all generated styles for the tag(s), selector(s), and rule(s) given
+  return style
+
+}
+```
+
+If you were going to create a mixin starting from the template above the first thing you'd want to do is change the function name (currently `mixin()`) to something unique, as well as update the mentions of `mixin` inside the mixin logic where it's used to name the elements the mixin is styling, `data-mixin` and `[data-mixin=`. Once you have changed the name of the function, you can pass a CSS selector or a list of CSS selectors into to the plugin, along with CSS properties and values as a string to be processed and added to new rules. This basic template can be extended in many ways to support different things. Here are some examples of reproCSS mixins and helper functions:
+
+### Aspect Ratio Mixin
+
+This mixin allows you to define an aspect ratio for elements.
+
+#### syntax
+
+```javascript
+${aspectRatio('iframe', 16/9)}
+```
+
+#### output
+
+```css
+/* aspectRatio(iframe, 1.77) */
+[data-aspect-ratio-unique=0] {
+  height: 503px;
+}
+```
+
+#### demo
+
+- [Aspect Ratio Mixin Demo](test/aspect-ratio-mixin.html)
+
+
+### XPath Selector Mixin
+
+This mixin allows you to use XPath as a selector for CSS rules.
+
+#### syntax
+
+```javascript
+${xpath('//*', `
+  border: 1px solid red;
+`)}
+```
+
+#### output
+
+```css
+/*
+
+//* {
+  border: 1px solid red;
+}
+
+*/
+[data-xpath-unique=0] {
+  border: 1px solid red;
+}
+```
+
+#### demo
+
+- [XPath Selector Mixin Demo](test/xpath-selector-mixin.html)
+
+
+### Auto Expand Mixin
+
+This mixin lets you choose between auto-expanding an element's width and height to match its `scrollWidth` or `scrollHeight`. Available keywords are `width`, `height`, and `both`.
+
+#### syntax
+
+```javascript
+${autoExpand('textarea', 'height')}
+```
+
+#### output
+
+```css
+/* autoExpand('textarea', 'height') */
+```
+
+#### demo
+
+- [Auto Expand Mixin Demo](test/auto-expand-mixin.html)
+
 
 > Made with ♥ by [@innovati](http://twitter.com/innovati)

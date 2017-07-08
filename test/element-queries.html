@@ -1,9 +1,70 @@
 <!DOCTYPE html>
 <meta charset=utf-8>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="http://staticresource.com/sixty.css" rel=stylesheet>
 <title>reproCSS element queries</title>
 
+<style id=sixty>
+  * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-kerning: auto;
+  }
+  html {
+    font-size: 12pt;
+    line-height: 1.4;
+    font-weight: 400;
+    font-family: 'Helvetica Neue', 'Myriad Pro', 'Segoe UI', Myriad, Helvetica, 'Lucida Grande', 'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', Tahoma, Geneva, Arial, sans-serif;
+  }
+  body {
+    padding: 1em;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  code,
+  pre,
+  blockquote {
+    padding: .2em;
+    background: rgba(0,0,0,.1);
+  }
+  code,
+  pre {
+    font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 .5em 0;
+    line-height: 1.2;
+    letter-spacing: -.02em;
+  }
+  [class*=float-] {
+    margin: 0 auto 1em auto;
+    display: block;
+    width: auto;
+    max-width: 100%;
+    clear: both;
+  }
+  @media (min-width: 600px) {
+    h1 { font-size: 300%; }
+    h2 { font-size: 200%; }
+    h3 { font-size: 180%; }
+    h4 { font-size: 160%; }
+    h5 { font-size: 140%; }
+    h6 { font-size: 120%; }
+    [class*=float-] {
+      max-width: 40%;
+    }
+    .float-left {
+      float: left;
+      margin: 0 1em .5em 0;
+    }
+    .float-right {
+      float: right;
+      margin: 0 0 .5em 1em;
+    }
+  }
+</style>
 <style>
   * {
     box-sizing: border-box;
@@ -246,11 +307,11 @@
 </style>
 
 <script>
-Array.from(document.querySelectorAll('[id*="Scroll"]'), tag => {
-  tag.addEventListener('scroll', e => {
-    reprocss.apply(example.getAttribute('data-reprocss'))
+  Array.from(document.querySelectorAll('[id*="Scroll"]'), tag => {
+    tag.addEventListener('scroll', e => {
+      reprocss.apply(example.getAttribute('data-reprocss'))
+    })
   })
-})
 </script>
 
 <script src=../reprocss.js></script>

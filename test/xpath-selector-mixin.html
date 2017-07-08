@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>XPath Selector mixin for reproCSS</title>
+
+<h1>XPath Selector Mixin Test</h1>
+
+<h2>This is an H2</h2>
+<h2>This H2 <span>:has(span)</span></h2>
+
+<div>Test</div>
+
+<style process=auto>
+
+  ${xpath('//h2[span]',`
+    background: hotpink;
+  `)}
+
+  ${xpath('//*[.="Test"]', `
+    color: black;
+    font-size: 14pt;
+    background: lime;
+  `)}
+
+</style>
+
+<script src="../mixins/xpath-selector.js"></script>
+<script src="../reprocss.js"></script>

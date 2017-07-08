@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>Aspect Ratio mixin for reproCSS</title>
+
+<h1>Aspect Ratio Mixin Test</h1>
+
+<div>Aspect Ratio Test</div>
+
+<aside>Aspect Ratio Test</aside>
+
+<style process=auto>
+  div {
+    background: lime;
+  }
+  aside {
+    background: hotpink;
+  }
+
+  ${aspectRatio('div', 16/9)}
+
+  ${aspectRatio('aside', 1.77)} /* also 16/9 */
+
+</style>
+
+<script src="../mixins/aspect-ratio.js"></script>
+<script src="../reprocss.js"></script>
