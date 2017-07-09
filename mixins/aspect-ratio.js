@@ -5,15 +5,15 @@ function aspectRatio(selectorList, ratio) {
   var style = ''
   var count = 0
 
-  for (var j = 0; j < tag.length; j++) {
+  for (var i=0; i < tag.length; i++) {
 
     var attr = btoa(selectorList).replace(/=/g,'')
 
-    tag[j].setAttribute('data-aspect-ratio-' + attr, count)
+    tag[i].setAttribute('data-aspect-ratio-' + attr, count)
 
     style += '\n/* aspectRatio(' + selectorList + ', ' + ratio + ') */\n'
              + '[data-aspect-ratio-' + attr + '="' + count + '"] {\n'
-             + '  height: ' + (tag[j].offsetWidth / ratio) + 'px;\n'
+             + '  height: ' + (tag[i].offsetWidth / ratio) + 'px;\n'
              + '}\n'
 
     count++

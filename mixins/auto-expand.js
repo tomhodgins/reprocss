@@ -3,7 +3,7 @@ function autoExpand(selectorList, direction) {
 
   var tag = document.querySelectorAll(selectorList)
 
-  for (var i = 0; i < tag.length; i++) {
+  for (var i=0; i < tag.length; i++) {
 
     if (direction == 'width' || direction == 'both') {
 

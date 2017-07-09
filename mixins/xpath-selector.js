@@ -19,7 +19,7 @@ function xpath(selector, rule) {
 
   }
 
-  for (var j = 0; j < tag.length; j++) {
+  for (var j=0; j < tag.length; j++) {
 
     var attr = btoa(selector).replace(/=/g,'')
 

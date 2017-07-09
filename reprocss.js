@@ -72,7 +72,7 @@
 
 }(this, function(e) {
 
-  const reprocss = {}
+  var reprocss = {}
 
   reprocss.count = 0
 
@@ -81,17 +81,19 @@
   reprocss.load = function() {
 
     // Find all <style process=""> tags in document
-    Array.from(document.querySelectorAll('style[process]'), function(tag) {
+    var tag = document.querySelectorAll('style[process]')
+
+    for (var i=0; i < tag.length; i++) {
 
       // Mark tag with data-reprocss="" attribute and current tag count
-      tag.setAttribute('data-reprocss', reprocss.count)
+      tag[i].setAttribute('data-reprocss', reprocss.count)
 
       // Increment tag count
       reprocss.count++
 
-      reprocss.process(tag)
+      reprocss.process(tag[i])
 
-    })
+    }
 
   }
 
@@ -103,9 +105,9 @@
     // Remove current tag contents
     tag.innerHTML = null
 
-    let trigger = tag.getAttribute('process')
+    var trigger = tag.getAttribute('process')
 
-    let number = tag.getAttribute('data-reprocss')
+    var number = tag.getAttribute('data-reprocss')
 
     switch (trigger) {
 
@@ -115,7 +117,7 @@
         // Populate tag with original CSS code
         tag.innerHTML = reprocss.style[number]
 
-        break;
+        break
 
       // process="once"
       case "once":
@@ -123,7 +125,7 @@
         // Populate tag immediately with evaluated CSS code
         reprocss.apply(number)
 
-        break;
+        break
 
       // process="auto"
       case "auto":
@@ -146,40 +148,42 @@
           reprocss.apply(number)
         })
 
-        break;
+        break
 
       // For any other process="" values
       default:
 
         // Turn space-separated lists into an array
-        let triggers = trigger.split(' ')
+        var triggers = trigger.split(' ')
 
-        let selectorAttr = tag.getAttribute('selector')
+        var selectorAttr = tag.getAttribute('selector')
 
         // if selector="" attribute has a value
         if (selectorAttr) {
 
           // split the value of selector="" into an array of selectors
-          let selectors = selectorAttr.split(',')
+          var selector = selectorAttr.split(',')
 
           // For each selector
-          Array.from(selectors, function(selector) {
+          for (var j=0; j < selector.length; j++) {
 
             // Find all tags in document that match
-            Array.from(document.querySelectorAll(selector), function(element) {
+            var element = document.querySelectorAll(selector[i])
 
-              Array.from(triggers, function(event) {
+            for (var k=0; k < element.length; k++) {
+
+              for (var l=0; l < triggers.length; l++) {
 
                 // Add a new event listener to window for that event
-                element.addEventListener(event, function() {
+                element[k].addEventListener(triggers[l], function() {
                   reprocss.apply(number)
                 })
 
-              })
+              }
 
-            })
+            }
 
-          })
+          }
 
         // if no selector="" attribute found we apply events to window
         } else {
@@ -199,7 +203,7 @@
 
         }
 
-        break;
+        break
 
     }
 
@@ -208,12 +212,12 @@
   reprocss.apply = function(number) {
 
     // Locate the corresponding `<style>` tag in DOM
-    let tag = document.querySelectorAll('style[data-reprocss]')[number]
+    var tag = document.querySelectorAll('style[data-reprocss]')[number]
 
     // Evaluate CSS code for this tag
-    let css = reprocss.style[number].replace(/\$\{([^\}]*)\}/g, function(string, match) {
+    var css = reprocss.style[number].replace(/\$\{([^\}]*)\}/g, function(string, match) {
 
-      let func = new Function('return '+match)
+      var func = new Function('return ' + match)
 
       return func()
 

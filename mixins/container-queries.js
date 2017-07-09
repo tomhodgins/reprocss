@@ -5,9 +5,9 @@ function container(containerList, condition, childList, rule) {
   var style = ''
   var count = 0
 
-  for (var i=0; i<tag.length; i++) {
+  for (var i=0; i < tag.length; i++) {
 
-    var func = new Function('return '+condition)
+    var func = new Function('return ' + condition)
 
     if (func.call(tag[i])) {
 
