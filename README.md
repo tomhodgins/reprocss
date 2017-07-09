@@ -178,7 +178,7 @@ function mixin(selectorList, rule) {
 }
 ```
 
-If you were going to create a mixin starting from the template above the first thing you'd want to do is change the function name (currently `mixin()`) to something unique, as well as update the mentions of `mixin` inside the mixin logic where it's used to name the elements the mixin is styling, `data-mixin` and `[data-mixin=`. Once you have changed the name of the function, you can pass a CSS selector or a list of CSS selectors into to the plugin, along with CSS properties and values as a string to be processed and added to new rules. This basic template can be extended in many ways to support different things. Here are some examples of reproCSS mixins and helper functions:
+If you were going to create a mixin starting from the template above the first thing you'd want to do is change the function name (currently `mixin()`) to something unique, as well as update the mentions of `mixin` inside the mixin logic where it's used to name the elements the mixin is styling, `data-mixin`. Once you have changed the name of the function, you can pass a CSS selector or a list of CSS selectors into to the plugin, along with CSS properties and values as a string to be processed and added to new rules. This basic template can be extended in many ways to support different things. Here are some examples of reproCSS mixins and helper functions:
 
 ### Aspect Ratio Mixin
 
@@ -194,7 +194,7 @@ ${aspectRatio('iframe', 16/9)}
 
 ```css
 /* aspectRatio(iframe, 1.77) */
-[data-aspect-ratio-unique=0] {
+[data-aspect-ratio-unique="0"] {
   height: 503px;
 }
 ```
@@ -226,7 +226,7 @@ ${xpath('//*', `
 }
 
 */
-[data-xpath-unique=0] {
+[data-xpath-unique="0"] {
   border: 1px solid red;
 }
 ```
@@ -255,6 +255,29 @@ ${autoExpand('textarea', 'height')}
 #### demo
 
 - [Auto Expand Mixin Demo](https://tomhodgins.github.io/reprocss/test/auto-expand-mixin.html)
+
+### Container Queries Mixin
+
+This mixin lets you define a 'container' using a CSS selector, run a JavaScript test against matching tags that match the container's selector, and to apply a CSS rule to that container or its children.
+
+#### syntax
+
+```javascript
+${container('div', 'this.offsetWidth > 500', 'span', 'background: lime;')}
+```
+
+#### output
+
+```css
+/* div: this.offsetWidth > 500 */
+[data-container-unique="0"] {
+  background: lime;
+}
+```
+
+#### demo
+
+- [Container Queries Mixin Demo](https://tomhodgins.github.io/reprocss/test/container-queries-mixin.html)
 
 
 > Made with ♥ by [@innovati](http://twitter.com/innovati)

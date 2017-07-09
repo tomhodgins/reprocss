@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>Container Queries mixin for reproCSS</title>
+
+<h1>Container Queries Mixin Test</h1>
+
+<div>Hello <span>there</span></div>
+
+<style process=auto>
+
+  div {
+    border: 1px solid;
+  }
+
+  ${container('div', 'this.offsetWidth > 700', '', `
+    background: lime;
+  `)}
+
+  ${container('div', 'this.offsetWidth > 700', 'span', `
+    color: red;
+  `)}
+
+</style>
+
+<script src=../mixins/container-queries.js></script>
+<script src=../reprocss.js></script>

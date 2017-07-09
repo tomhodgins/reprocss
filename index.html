@@ -3,7 +3,7 @@
 <meta name=viewport content="width=device-width, initial-scale=1">
 <title>reproCSS</title>
 
-<style process=auto>
+<style>
   * {
     box-sizing: border-box;
     text-rendering: optimizeLegibility;
@@ -302,6 +302,26 @@
   <li><a href=test/auto-expand-mixin.html>Auto Expand Mixin Demo</a>
 </ul>
 
-<footer>Made with &hearts; by <a href=http://twitter.com/innovati>@innovati</a></footer>
 
-<script src=reprocss.js></script>
+<h3 id=container-queries-mixin>Container Queries Mixin</h3>
+
+<p>This mixin lets you define a 'container' using a CSS selector, run a JavaScript test against matching tags that match the container's selector, and to apply a CSS rule to that container or its children.</p>
+
+<h4>syntax</h4>
+
+<pre>${container('div', 'this.offsetWidth > 500', 'span', 'background: lime;')}</pre>
+
+<h4>output</h4>
+
+<pre>/* div: this.offsetWidth > 500 */
+[data-container-unique="0"] {
+  background: lime;
+}</pre>
+
+<h4>demo</h4>
+
+<ul>
+  <li><a href=https://tomhodgins.github.io/reprocss/test/container-queries-mixin.html>Container Queries Mixin Demo</a>
+</ul>
+
+<footer>Made with &hearts; by <a href=http://twitter.com/innovati>@innovati</a></footer>
