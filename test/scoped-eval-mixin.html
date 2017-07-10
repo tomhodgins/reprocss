@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>Scoped Eval() mixin for reproCSS</title>
+
+<h1>Scoped Eval() Mixin Test</h1>
+
+<div style=width:25%>25%</div>
+<div style=width:50%>50%</div>
+<div>100%</div>
+
+<style process=auto>
+
+  ${scoped('div', `
+    margin: 1em;
+    background: lime;
+    height: eval(this.offsetWidth / (16/9))px;
+  `)}
+
+</style>
+
+<script src=../mixins/scoped-eval.js></script>
+<script src=../reprocss.js></script>

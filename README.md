@@ -280,4 +280,34 @@ ${container('div', 'this.offsetWidth > 500', 'span', 'background: lime;')}
 - [Container Queries Mixin Demo](https://tomhodgins.github.io/reprocss/test/container-queries-mixin.html)
 
 
+### Scoped Eval() Mixin
+
+This mixin lets you define a CSS selector list, and to output CSS rules with JS interpolation from the context of each element in the document matching the selector.
+
+#### syntax
+
+```javascript
+${scoped('div', `
+  margin: 1em;
+  background: lime;
+  height: eval(this.offsetWidth / (16/9))px;
+`)}
+```
+
+#### output
+
+```css
+/* Scope: div */
+[data-scoped-unique="0"] {
+  margin: 1em;
+  background: lime;
+  height: 144.5625px;
+}
+```
+
+#### demo
+
+- [Scoped Eval() Mixin Demo](https://tomhodgins.github.io/reprocss/test/scoped-eval-mixin.html)
+
+
 > Made with ♥ by [@innovati](http://twitter.com/innovati)

@@ -324,4 +324,31 @@
   <li><a href=https://tomhodgins.github.io/reprocss/test/container-queries-mixin.html>Container Queries Mixin Demo</a>
 </ul>
 
+<h3 id=scoped-eval-mixin>Scoped Eval() Mixin</h3>
+
+<p>This mixin lets you define a CSS selector list, and to output CSS rules with JS interpolation from the context of each element in the document matching the selector.</p>
+
+<h4>syntax</h4>
+
+<pre>${scoped('div', `
+  margin: 1em;
+  background: lime;
+  height: eval(this.offsetWidth / (16/9))px;
+`)}</pre>
+
+<h4>output</h4>
+
+<pre>/* Scope: div */
+[data-scoped-unique="0"] {
+  margin: 1em;
+  background: lime;
+  height: 144.5625px;
+}</pre>
+
+<h4>demo</h4>
+
+<ul>
+  <li><a href=https://tomhodgins.github.io/reprocss/test/scoped-eval-mixin.html>Scoped Eval() Mixin Demo</a>
+</ul>
+
 <footer>Made with &hearts; by <a href=http://twitter.com/innovati>@innovati</a></footer>
