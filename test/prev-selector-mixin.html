@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>Prev Selector mixin for reproCSS</title>
+
+<h1>Prev Selector Mixin Test</h1>
+
+<ul>
+  <li>item 1
+  <li>item 2
+  <li>item 3
+</ul>
+
+<style process=auto>
+
+  ${prev('li:nth-of-type(2)', `background: lime;`)}
+
+</style>
+
+<script src=../mixins/prev-selector.js></script>
+<script src=../reprocss.js></script>

@@ -182,7 +182,7 @@ If you were going to create a mixin starting from the template above the first t
 
 ### Aspect Ratio Mixin
 
-This mixin allows you to define an aspect ratio for elements.
+This mixin lets you to define an aspect ratio for elements.
 
 #### syntax
 
@@ -206,7 +206,7 @@ ${aspectRatio('iframe', 16/9)}
 
 ### XPath Selector Mixin
 
-This mixin allows you to use XPath as a selector for CSS rules.
+This mixin lets you use XPath as a selector for CSS rules.
 
 #### syntax
 
@@ -255,6 +255,7 @@ ${autoExpand('textarea', 'height')}
 #### demo
 
 - [Auto Expand Mixin Demo](https://tomhodgins.github.io/reprocss/test/auto-expand-mixin.html)
+
 
 ### Container Queries Mixin
 
@@ -308,6 +309,54 @@ ${scoped('div', `
 #### demo
 
 - [Scoped Eval() Mixin Demo](https://tomhodgins.github.io/reprocss/test/scoped-eval-mixin.html)
+
+
+### Parent Selector Mixin
+
+This mixin lets you define a CSS selector list and apply a CSS rule to the parent node of any matching tags in your document.
+
+#### syntax
+
+```javascript
+${parent('li', 'border: 1px solid red;')}
+```
+
+#### output
+
+```css
+/* Parent: li */
+[data-parent-unique="0"] {
+  border: 1px solid red;
+}
+```
+
+#### demo
+
+- [Parent Selector Mixin Demo](https://tomhodgins.github.io/reprocss/test/parent-selector-mixin.html)
+
+
+### Prev Selector Mixin
+
+This mixin lets you define a CSS selector list and apply a CSS rule to the previous sibling node of any matching tags in your document.
+
+#### syntax
+
+```javascript
+${prev('li:nth-of-type(2)', 'background: lime;')}
+```
+
+#### output
+
+```css
+/* Prev: li */
+[data-prev-unique="0"] {
+  background: lime;
+}
+```
+
+#### demo
+
+- [Prev Selector Mixin Demo](https://tomhodgins.github.io/reprocss/test/parent-selector-mixin.html)
 
 
 > Made with ♥ by [@innovati](http://twitter.com/innovati)

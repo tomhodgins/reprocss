@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>Parent Selector mixin for reproCSS</title>
+
+<h1>Parent Selector Mixin Test</h1>
+
+<ul>
+  <li>item 1
+  <li>item 2
+  <li>item 3
+</ul>
+
+<style process=auto>
+
+  ${parent('li', `border: 1px solid red;`)}
+
+</style>
+
+<script src=../mixins/parent-selector.js></script>
+<script src=../reprocss.js></script>

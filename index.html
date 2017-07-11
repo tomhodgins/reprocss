@@ -235,7 +235,7 @@
 
 <h3 id=aspect-ration-mixin>Aspect Ratio Mixin</h3>
 
-<p>This mixin allows you to define an aspect ratio for elements.</p>
+<p>This mixin lets you to define an aspect ratio for elements.</p>
 
 <h4>syntax</h4>
 
@@ -257,7 +257,7 @@
 
 <h3 id=xpath-selector-mixin>XPath Select Mixin</h3>
 
-<p>This mixin allows you to use XPath as a selector for CSS rules.</p>
+<p>This mixin lets you use XPath as a selector for CSS rules.</p>
 
 <h4>syntax</h4>
 
@@ -349,6 +349,48 @@
 
 <ul>
   <li><a href=https://tomhodgins.github.io/reprocss/test/scoped-eval-mixin.html>Scoped Eval() Mixin Demo</a>
+</ul>
+
+<h3 id=parent-selector-mixin>Parent Selector Mixin</h3>
+
+<p>This mixin lets you define a CSS selector list and apply a CSS rule to the parent node of any matching tags in your document.</p>
+
+<h4>syntax</h4>
+
+<pre>${parent('li', 'border: 1px solid red;')}</pre>
+
+<h4>output</h4>
+
+<pre>/* Parent: li */
+[data-parent-unique="0"] {
+  border: 1px solid red;
+}</pre>
+
+<h4>demo</h4>
+
+<ul>
+  <li><a href=https://tomhodgins.github.io/reprocss/test/parent-selector-mixin.html>Parent Selector Mixin Demo</a>
+</ul>
+
+<h3 id=prev-selector-mixin>Prev Selector Mixin</h3>
+
+<p>This mixin lets you define a CSS selector list and apply a CSS rule to the previous sibling node of any matching tags in your document.</p>
+
+<h4>syntax</h4>
+
+<pre>${prev('li:nth-of-type(2)', 'background: lime;')}</pre>
+
+<h4>output</h4>
+
+<pre>/* Prev: li */
+[data-prev-unique="0"] {
+  background: lime;
+}</pre>
+
+<h4>demo</h4>
+
+<ul>
+  <li><a href=https://tomhodgins.github.io/reprocss/test/parent-selector-mixin.html>Prev Selector Mixin Demo</a>
 </ul>
 
 <footer>Made with &hearts; by <a href=http://twitter.com/innovati>@innovati</a></footer>
