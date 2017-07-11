@@ -17,7 +17,7 @@ function container(containerList, condition, childList, rule) {
 
       var container = '[data-container-' + attr + '="' + count + '"]'
 
-      style += '\n/* ' + containerList + '(' + condition + ') */\n'
+      style += '\n/* ' + containerList + '(' + condition + ') ' + childList + ' */\n'
                + container + ' ' + childList + ' {\n'
                + '  ' + rule + '\n'
                + '}\n'

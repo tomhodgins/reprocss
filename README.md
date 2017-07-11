@@ -270,7 +270,7 @@ ${container('div', 'this.offsetWidth > 500', 'span', 'background: lime;')}
 #### output
 
 ```css
-/* div(this.offsetWidth > 500) */
+/* div(this.offsetWidth > 500) span */
 [data-container-unique="0"] {
   background: lime;
 }
