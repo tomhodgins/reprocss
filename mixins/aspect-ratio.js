@@ -11,7 +11,7 @@ function aspectRatio(selectorList, ratio) {
 
     tag[i].setAttribute('data-aspect-ratio-' + attr, count)
 
-    style += '\n/* aspectRatio(' + selectorList + ', ' + ratio + ') */\n'
+    style += '\n/* ' + selectorList + ' { aspect-ratio: ' + ratio + '; } */\n'
              + '[data-aspect-ratio-' + attr + '="' + count + '"] {\n'
              + '  height: ' + (tag[i].offsetWidth / ratio) + 'px;\n'
              + '}\n'

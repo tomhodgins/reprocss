@@ -193,7 +193,7 @@ ${aspectRatio('iframe', 16/9)}
 #### output
 
 ```css
-/* aspectRatio(iframe, 1.77) */
+/* iframe { aspect-ratio: 1.77; } */
 [data-aspect-ratio-unique="0"] {
   height: 503px;
 }
