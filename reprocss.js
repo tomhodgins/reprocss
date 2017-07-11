@@ -2,7 +2,7 @@
 /*
 
   # reproCSS
-  ## version 0.0.4
+  ## version 0.0.5
 
   reproCSS is a flexible CSS reprocessor that uses `<style>` tags and a `process=""` attribute.
 
@@ -168,7 +168,7 @@
           for (var j=0; j < selector.length; j++) {
 
             // Find all tags in document that match
-            var element = document.querySelectorAll(selector[i])
+            var element = document.querySelectorAll(selector[j])
 
             for (var k=0; k < element.length; k++) {
 
