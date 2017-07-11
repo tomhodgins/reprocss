@@ -21,6 +21,6 @@ function autoExpand(selectorList, direction) {
 
   }
 
-  return '\n/* autoExpand(\'' + selectorList + '\', \'' + direction +'\') */\n'
+  return '\n/* ' + selectorList + ' { ' + direction +': auto-expand; } */\n'
 
 }

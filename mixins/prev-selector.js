@@ -11,7 +11,7 @@ function prev(selectorList, rule) {
 
     tag[i].previousElementSibling.setAttribute('data-prev-' + attr, count)
 
-    style += '\n/* Prev: ' + selectorList + ' */\n'
+    style += '\n/* ' + selectorList + ':prev */\n'
              + '[data-prev-' + attr + '="' + count + '"] {\n'
              + '  ' + rule + '\n'
              + '}\n'

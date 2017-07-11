@@ -11,7 +11,7 @@ function parent(selectorList, rule) {
 
     tag[i].parentNode.setAttribute('data-parent-' + attr, count)
 
-    style += '\n/* Parent: ' + selectorList + ' */\n'
+    style += '\n/* '+ selectorList + ':parent */\n'
              + '[data-parent-' + attr + '="' + count + '"] {\n'
              + '  ' + rule + '\n'
              + '}\n'

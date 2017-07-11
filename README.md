@@ -249,7 +249,7 @@ ${autoExpand('textarea', 'height')}
 #### output
 
 ```css
-/* autoExpand('textarea', 'height') */
+/* textarea { height: auto-expand; } */
 ```
 
 #### demo
@@ -270,7 +270,7 @@ ${container('div', 'this.offsetWidth > 500', 'span', 'background: lime;')}
 #### output
 
 ```css
-/* div: this.offsetWidth > 500 */
+/* div(this.offsetWidth > 500) */
 [data-container-unique="0"] {
   background: lime;
 }
@@ -324,7 +324,7 @@ ${parent('li', 'border: 1px solid red;')}
 #### output
 
 ```css
-/* Parent: li */
+/* li:parent */
 [data-parent-unique="0"] {
   border: 1px solid red;
 }
@@ -348,7 +348,7 @@ ${prev('li:nth-of-type(2)', 'background: lime;')}
 #### output
 
 ```css
-/* Prev: li */
+/* li:prev */
 [data-prev-unique="0"] {
   background: lime;
 }
