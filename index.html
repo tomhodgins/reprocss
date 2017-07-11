@@ -393,4 +393,26 @@
   <li><a href=https://tomhodgins.github.io/reprocss/test/parent-selector-mixin.html>Prev Selector Mixin Demo</a>
 </ul>
 
+
+<h3 id=closest-selector-mixin>Closest Selector Mixin</h3>
+
+<p>This mixin lets you define a CSS selector list and a second CSS selector, and apply a CSS rule to the closest ancestor node matching the second selector.</p>
+
+<h4>syntax</h4>
+
+<pre>${closest('#start', '.target', `border-color: lime`)}</pre>
+
+<h4>output</h4>
+
+<pre>/* #start:closest(.target) */
+[data-closest-unique="0"] {
+  border-color: lime
+}</pre>
+
+<h4>demo</h4>
+
+<ul>
+  <li><a href=https://tomhodgins.github.io/reprocss/test/closest-selector-mixin.html>Closest Selector Mixin Demo</a>
+
+
 <footer>Made with &hearts; by <a href=http://twitter.com/innovati>@innovati</a></footer>

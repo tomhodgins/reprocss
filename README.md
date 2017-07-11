@@ -358,5 +358,28 @@ ${prev('li:nth-of-type(2)', 'background: lime;')}
 
 - [Prev Selector Mixin Demo](https://tomhodgins.github.io/reprocss/test/parent-selector-mixin.html)
 
+### Closest Selector Mixin
+
+This mixin lets you define a CSS selector list and a second CSS selector, and apply a CSS rule to the closest ancestor node matching the second selector.
+
+#### syntax
+
+```javascript
+${closest('#start', '.target', `border-color: lime`)}
+```
+
+#### output
+
+```css
+/* #start:closest(.target) */
+[data-closest-unique="0"] {
+  border-color: lime
+}
+```
+
+#### demo
+
+- [Closest Selector Mixin Demo](https://tomhodgins.github.io/reprocss/test/closest-selector-mixin.html)
+
 
 > Made with ♥ by [@innovati](http://twitter.com/innovati)

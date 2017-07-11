@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>Closest Selector mixin for reproCSS</title>
+
+<h1>Closest Selector Mixin Test</h1>
+
+<div class=target>target
+  <div>
+    <div>
+      <div>
+        <div>
+          <div class=target>target
+            <div>
+              <div>
+                <div>
+                  <div id=start>start</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style process=auto>
+
+  div {
+    padding: 1em;
+    border: 1px solid #eee;
+  }
+
+  ${closest('#start', '.target', `border-color: lime`)}
+
+</style>
+
+<script src=../mixins/closest-selector.js></script>
+<script src=../reprocss.js></script>
