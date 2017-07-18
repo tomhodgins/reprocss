@@ -1,12 +1,37 @@
-/* XPath Selector Mixin for reproCSS */
-function xpath(selector, rule) {
+/*
+
+# XPath Selector Mixin for reproCSS
+## version 0.0.6
+
+Apply CSS styles to HTML elements that match an XPath selector.
+
+### Syntax
+
+    xpath(xpathSelector, rule)
+
+- `xpathSelector` is a comma-separated string containing an XPath selector
+- `rule` is a semicolon-separated string containing one or more CSS declarations
+
+### Example
+
+    xpath('//*', 'border: 1px solid lime')
+
+- https://github.com/tomhodgins/reprocss
+
+Author: Tommy Hodgins
+
+License: MIT
+
+*/
+
+function xpath(xpathSelector, rule) {
 
   var tag = new Array()
   var style = ''
   var count = 0
 
   var result = document.evaluate(
-                 selector,
+                 xpathSelector,
                  document,
                  null,
                  XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE,
@@ -21,11 +46,11 @@ function xpath(selector, rule) {
 
   for (var j=0; j < tag.length; j++) {
 
-    var attr = btoa(selector).replace(/=/g,'')
+    var attr = btoa(xpathSelector).replace(/=/g,'')
 
     tag[j].setAttribute('data-xpath-'+attr, count)
 
-    style += '\n/*\n\n' + selector + ' {\n  ' + rule + '\n}\n\n*/\n'
+    style += '\n/*\n\n' + xpathSelector + ' {\n  ' + rule + '\n}\n\n*/\n'
              + '[data-xpath-' + attr + '="' + count + '"] {\n'
              + '  ' + rule + '\n'
              + '}\n'

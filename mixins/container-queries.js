@@ -1,4 +1,31 @@
-/* Container Queries Mixin for reproCSS */
+/*
+
+# Container Queries Mixin for reproCSS
+## version 0.0.6
+
+Define a 'container' using a CSS selector, run a JavaScript test on matching HTML elements, and apply CSS styles to the container or its child elements if the test resolves `true`.
+
+### Syntax
+
+    container(containerList, condition, childList, rule)
+
+- `containerList` is a comma-separated string containing one or more CSS selectors
+- `condition` is a JavaScript test that should evaluate to `true` or `false`
+- `childList` is a comma-separated string containing one or more CSS selectors
+- `rule` is a semicolon-separated string containing one or more CSS declarations
+
+### Example
+
+    container('div', 'this.offsetWidth > 500', 'span', 'background: lime')
+
+- https://github.com/tomhodgins/reprocss
+
+Author: Tommy Hodgins
+
+License: MIT
+
+*/
+
 function container(containerList, condition, childList, rule) {
 
   var tag = document.querySelectorAll(containerList)

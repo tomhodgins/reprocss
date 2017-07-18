@@ -1,4 +1,30 @@
-/* Closest Selector Mixin for reproCSS */
+/*
+
+# Closest Selector Mixin for reproCSS
+## version 0.0.6
+
+Apply CSS styles to the closest ancestor matching a CSS selector of HTML elements that match a CSS selector.
+
+### Syntax
+
+    closest(selectorList, element, rule)
+
+- `selectorList` is a comma-separated string containing one or more CSS selectors
+- `element` is a CSS selector
+- `rule` is a semicolon-separated string containing one or more CSS declarations
+
+### Example
+
+    closest('#start', '.target', `border-color: lime`)
+
+- https://github.com/tomhodgins/reprocss
+
+Author: Tommy Hodgins
+
+License: MIT
+
+*/
+
 function closest(selectorList, element, rule) {
 
   var tag = document.querySelectorAll(selectorList)

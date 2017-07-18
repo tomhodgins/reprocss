@@ -1,4 +1,29 @@
-/* Scoped JS Interopation Mixin for reproCSS */
+/*
+
+# Scoped JS Interopation Mixin for reproCSS
+## version 0.0.6
+
+Evaluate JavaScript from the context of each HTML element that matches the supplied CSS selector list.
+
+### Syntax
+
+    scoped(selectorList, rule)
+
+- `selectorList` is a comma-separated string containing one or more CSS selectors
+- `rule` is a semicolon-separated string containing one or more CSS declarations
+
+### Example
+
+    scoped('div', 'height: eval(this.offsetWidth / (16/9))px')
+
+- https://github.com/tomhodgins/reprocss
+
+Author: Tommy Hodgins
+
+License: MIT
+
+*/
+
 function scoped(selectorList, rule) {
 
   var tag = document.querySelectorAll(selectorList)
