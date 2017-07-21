@@ -1,7 +1,7 @@
 /*
 
 # Scoped JS Interopation Mixin for reproCSS
-## version 0.0.6
+## version 0.0.7
 
 Evaluate JavaScript from the context of each HTML element that matches the supplied CSS selector list.
 

@@ -1,7 +1,7 @@
 /*
 
 # Container Queries Mixin for reproCSS
-## version 0.0.6
+## version 0.0.7
 
 Define a 'container' using a CSS selector, run a JavaScript test on matching HTML elements, and apply CSS styles to the container or its child elements if the test resolves `true`.
 
@@ -34,11 +34,11 @@ function container(containerList, condition, childList, rule) {
 
   for (var i=0; i < tag.length; i++) {
 
+    var attr = btoa(containerList).replace(/=/g, '')
+
     var func = new Function('return ' + condition)
 
     if (func.call(tag[i])) {
-
-      var attr = btoa(containerList).replace(/=/g, '')
 
       tag[i].setAttribute('data-container-' + attr, count)
 
@@ -50,6 +50,10 @@ function container(containerList, condition, childList, rule) {
                + '}\n'
 
       count++
+
+    } else {
+
+      tag[i].setAttribute('data-container-' + attr, '')
 
     }
 

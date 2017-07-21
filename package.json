@@ -40,5 +40,29 @@
   "bugs": {
     "url": "https://github.com/tomhodgins/reprocss/issues"
   },
-  "homepage": "https://github.com/tomhodgins/reprocss#readme"
+  "homepage": "https://github.com/tomhodgins/reprocss#readme",
+  "contributors": [
+    {
+      "name": "Tommy Hodgins",
+      "email": "tomhodgins@gmail.com",
+      "url": "http://tomhodgins.com"
+    }
+  ],
+  "npmName": "reprocss",
+  "npmFileMap": [
+    {
+      "basePath": "/",
+      "files": [
+        "reprocss.js",
+        "mixins/aspect-ratio.js",
+        "mixins/auto-expand.js",
+        "mixins/closest-selector.js",
+        "mixins/container-queries.js",
+        "mixins/parent-selector.js",
+        "mixins/parent-selector.js",
+        "mixins/scoped-eval.js",
+        "mixins/xpath-selector.js"
+      ]
+    }
+  ]
 }

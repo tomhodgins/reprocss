@@ -1,7 +1,7 @@
 /*
 
 # AutoExpand Mixin for reproCSS
-## version 0.0.6
+## version 0.0.7
 
 Automatically expand an HTML element's `width` or `height` to match its `scrollWidth`, `scrollHeight`, or both.
 

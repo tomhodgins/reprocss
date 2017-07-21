@@ -1,7 +1,7 @@
 /*
 
 # XPath Selector Mixin for reproCSS
-## version 0.0.6
+## version 0.0.7
 
 Apply CSS styles to HTML elements that match an XPath selector.
 

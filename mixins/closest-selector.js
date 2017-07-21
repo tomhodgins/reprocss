@@ -1,7 +1,7 @@
 /*
 
 # Closest Selector Mixin for reproCSS
-## version 0.0.6
+## version 0.0.7
 
 Apply CSS styles to the closest ancestor matching a CSS selector of HTML elements that match a CSS selector.
 
