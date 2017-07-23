@@ -14,6 +14,6 @@ echo "Minifying mixins...";
 cd mixins;
 for f in *.js;
 do
-  echo "/* ${f} / Tommy Hodgins / MIT License / version 0.0.7 */" > ../min/"${f%}.min.js";
-  uglifyjs ./"$f" >> ../min/"${f%}.min.js";
+  echo "/* ${f%.*} / Tommy Hodgins / MIT License / version 0.0.7 */" > ../min/"${f%.*}.min.js";
+  uglifyjs ./"$f" >> ../min/"${f%.*}.min.js";
 done
