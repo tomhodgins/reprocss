@@ -271,7 +271,7 @@ ${container('div', 'this.offsetWidth > 500', 'span', 'background: lime;')}
 
 ```css
 /* div(this.offsetWidth > 500) span */
-[data-container-unique="0"] {
+[data-container-unique="0"] span {
   background: lime;
 }
 ```
