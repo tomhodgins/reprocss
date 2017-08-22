@@ -48,7 +48,8 @@ function scoped(selectorList, rule) {
              + '[data-scoped-' + attr + '="' + count + '"] {\n'
              + '  ' + scopedRule + '\n'
              + '}\n'
-    count++
+
+      count++
 
   }
 
