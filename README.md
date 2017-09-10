@@ -401,42 +401,6 @@ ancestor('#start', '.target', `border-color: lime`)
 }
 ```
 
-
-## code
-
-```javascript
-function ancestor(selector, ancestor, rule) {
-
-  var tag = document.querySelectorAll(ancestor)
-  var style = ''
-  var count = 0
-
-  for (var i=0; i<tag.length; i++) {
-
-    var descendant = tag[i].querySelector(selector)
-
-    if (descendant) {
-
-      var attr = (selector+ancestor).replace(/\W+/g, '')
-
-      tag[i].setAttribute('data-ancestor-' + attr, count)
-
-      style += '\n/* ' + selector + ':ancestor(' + ancestor + ') */\n'
-             + '[data-ancestor-' + attr + '="' + count + '"] {\n'
-             + '  ' + rule + '\n'
-             + '}\n'
-
-      count ++
-
-    }
-
-  }
-
-  return style
-
-}
-```
-
 ## demo
 
 - [Ancestor Selector Mixin Demo](https://tomhodgins.github.io/reprocss/test/ancestor-selector-mixin.html)
