@@ -270,7 +270,7 @@ container('div', 'this.offsetWidth > 500', 'span', 'background: lime;')
 
 ```css
 /* div(this.offsetWidth > 500) span */
-[data-container-unique="0"] {
+[data-container-unique="0"] span {
   background: lime;
 }
 ```
@@ -382,6 +382,7 @@ closest('#start', '.target', `border-color: lime`)
 - [Closest Selector Mixin Demo](https://tomhodgins.github.io/reprocss/test/closest-selector-mixin.html)
 
 
+<<<<<<< HEAD
 ### Ancestor Selector Mixin
 
 This mixin lets CSS authors apply styles to all ancestor elements matching a CSS selector to another element matching a given CSS selector. You can use this to style all matching ancestors.
