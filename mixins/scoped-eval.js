@@ -1,15 +1,15 @@
 /*
 
 # Scoped JS Interopation Mixin for reproCSS
-## version 0.0.7
+## version 0.0.8
 
 Evaluate JavaScript from the context of each HTML element that matches the supplied CSS selector list.
 
 ### Syntax
 
-    scoped(selectorList, rule)
+    scoped(selector, rule)
 
-- `selectorList` is a comma-separated string containing one or more CSS selectors
+- `selector` is a comma-separated string containing one or more CSS selectors
 - `rule` is a semicolon-separated string containing one or more CSS declarations
 
 ### Example
@@ -24,15 +24,15 @@ License: MIT
 
 */
 
-function scoped(selectorList, rule) {
+function scoped(selector, rule) {
 
-  var tag = document.querySelectorAll(selectorList)
+  var tag = document.querySelectorAll(selector)
   var style = ''
   var count = 0
 
   for (var i=0; i < tag.length; i++) {
 
-    var attr = btoa(selectorList).replace(/=/g, '')
+  var attr = selector.replace(/\W+/g, '')
 
     tag[i].setAttribute('data-scoped-' + attr, count)
 
@@ -44,7 +44,7 @@ function scoped(selectorList, rule) {
 
     })
 
-    style += '\n/* Scope: ' + selectorList + ' */\n'
+    style += '\n/* Scope: ' + selector + ' */\n'
              + '[data-scoped-' + attr + '="' + count + '"] {\n'
              + '  ' + scopedRule + '\n'
              + '}\n'

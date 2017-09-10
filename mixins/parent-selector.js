@@ -1,15 +1,15 @@
 /*
 
 # Parent Selector Mixin for reproCSS
-## version 0.0.7
+## version 0.0.8
 
 Apply CSS styles to the direct parent of HTML elements matching a CSS selector.
 
 ### Syntax
 
-    parent(selectorList, rule)
+    parent(selector, rule)
 
-- `selectorList` is a comma-separated string containing one or more CSS selectors
+- `selector` is a comma-separated string containing one or more CSS selectors
 - `rule` is a semicolon-separated string containing one or more CSS declarations
 
 ### Example
@@ -24,19 +24,19 @@ License: MIT
 
 */
 
-function parent(selectorList, rule) {
+function parent(selector, rule) {
 
-  var tag = document.querySelectorAll(selectorList)
+  var tag = document.querySelectorAll(selector)
   var style = ''
   var count = 0
 
   for (var i = 0; i < tag.length; i++) {
 
-    var attr = btoa(selectorList).replace(/=/g, '')
+    var attr = selector.replace(/\W+/g, '')
 
     tag[i].parentNode.setAttribute('data-parent-' + attr, count)
 
-    style += '\n/* '+ selectorList + ':parent */\n'
+    style += '\n/* '+ selector + ':parent */\n'
              + '[data-parent-' + attr + '="' + count + '"] {\n'
              + '  ' + rule + '\n'
              + '}\n'

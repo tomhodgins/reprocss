@@ -1,16 +1,16 @@
 /*
 
 # Closest Selector Mixin for reproCSS
-## version 0.0.7
+## version 0.0.8
 
-Apply CSS styles to the closest ancestor matching a CSS selector of HTML elements that match a CSS selector.
+This mixin lets CSS authors apply styles to the nearest element matching a CSS selector to another element matching a given CSS selector. You can use this to find the nearest matching ancestor.
 
 ### Syntax
 
-    closest(selectorList, element, rule)
+    closest(selector, ancestor, rule)
 
-- `selectorList` is a comma-separated string containing one or more CSS selectors
-- `element` is a CSS selector
+- `selector` is a comma-separated string containing one or more CSS selectors
+- `ancestor` is a CSS selector
 - `rule` is a semicolon-separated string containing one or more CSS declarations
 
 ### Example
@@ -25,19 +25,19 @@ License: MIT
 
 */
 
-function closest(selectorList, element, rule) {
+function closest(selector, ancestor, rule) {
 
-  var tag = document.querySelectorAll(selectorList)
+  var tag = document.querySelectorAll(selector)
   var style = ''
   var count = 0
 
   for (var i = 0; i < tag.length; i++) {
 
-    var attr = btoa(selectorList).replace(/=/g, '')
+    var attr = (selector+ancestor).replace(/\W+/g, '')
 
-    tag[i].closest(element).setAttribute('data-closest-' + attr, count)
+    tag[i].closest(ancestor).setAttribute('data-closest-' + attr, count)
 
-    style += '\n/* ' + selectorList + ':closest(' + element + ') */\n'
+    style += '\n/* ' + selector + ':closest(' + ancestor + ') */\n'
              + '[data-closest-' + attr + '="' + count + '"] {\n'
              + '  ' + rule + '\n'
              + '}\n'

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>Ancestor Selector mixin for reproCSS</title>
+
+<h1>Ancestor Selector Mixin Test</h1>
+
+<div class=demo>
+
+  <ul>
+    <li>item 1
+    <li>item 2
+    <li>item 3
+  </ul>
+
+  <ul class=demo>
+    <li>item 1
+    <li class=demo>item 2 <span class=start>example</span>
+    <li>item 3
+  </ul>
+
+  <ul>
+    <li>item 1
+    <li>item 2
+    <li>item 3
+  </ul>
+
+<div>
+
+<style process=auto>
+
+  ${ancestor('.start', '.demo', `
+      border: 1px solid lime;
+  `)}
+
+</style>
+
+<script src=../mixins/ancestor-selector.js></script>
+<script src=../reprocss.js></script>

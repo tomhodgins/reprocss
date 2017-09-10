@@ -1,15 +1,15 @@
 /*
 
 # XPath Selector Mixin for reproCSS
-## version 0.0.7
+## version 0.0.8
 
 Apply CSS styles to HTML elements that match an XPath selector.
 
 ### Syntax
 
-    xpath(xpathSelector, rule)
+    xpath(selector, rule)
 
-- `xpathSelector` is a comma-separated string containing an XPath selector
+- `selector` is a comma-separated string containing an XPath selector
 - `rule` is a semicolon-separated string containing one or more CSS declarations
 
 ### Example
@@ -24,14 +24,14 @@ License: MIT
 
 */
 
-function xpath(xpathSelector, rule) {
+function xpath(selector, rule) {
 
   var tag = new Array()
   var style = ''
   var count = 0
 
   var result = document.evaluate(
-                 xpathSelector,
+                 selector,
                  document,
                  null,
                  XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE,
@@ -46,11 +46,11 @@ function xpath(xpathSelector, rule) {
 
   for (var j=0; j < tag.length; j++) {
 
-    var attr = btoa(xpathSelector).replace(/=/g,'')
+    var attr = selector.replace(/\W+/g, '')
 
     tag[j].setAttribute('data-xpath-'+attr, count)
 
-    style += '\n/*\n\n' + xpathSelector + ' {\n  ' + rule + '\n}\n\n*/\n'
+    style += '\n/*\n\n' + selector + ' {\n  ' + rule + '\n}\n\n*/\n'
              + '[data-xpath-' + attr + '="' + count + '"] {\n'
              + '  ' + rule + '\n'
              + '}\n'

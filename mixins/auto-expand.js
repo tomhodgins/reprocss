@@ -1,15 +1,15 @@
 /*
 
 # AutoExpand Mixin for reproCSS
-## version 0.0.7
+## version 0.0.8
 
 Automatically expand an HTML element's `width` or `height` to match its `scrollWidth`, `scrollHeight`, or both.
 
 ### Syntax
 
-    autoExpand(selectorList, direction)
+    autoExpand(selector, direction)
 
-- `selectorList` is a comma-separated string containing one or more CSS selectors
+- `selector` is a comma-separated string containing one or more CSS selectors
 - `direction` is a string matching `width`, `height`, or `both`
 
 ### Example
@@ -24,9 +24,9 @@ License: MIT
 
 */
 
-function autoExpand(selectorList, direction) {
+function autoExpand(selector, direction) {
 
-  var tag = document.querySelectorAll(selectorList)
+  var tag = document.querySelectorAll(selector)
 
   for (var i=0; i < tag.length; i++) {
 
@@ -46,6 +46,6 @@ function autoExpand(selectorList, direction) {
 
   }
 
-  return '\n/* ' + selectorList + ' { ' + direction +': auto-expand; } */\n'
+  return '\n/* ' + selector + ' { ' + direction +': auto-expand; } */\n'
 
 }

@@ -1,15 +1,15 @@
 /*
 
 # Prev Selector Mixin for reproCSS
-## version 0.0.7
+## version 0.0.8
 
 Apply CSS styles to the directly preceding sibling of HTML elements matching a CSS selector.
 
 ### Syntax
 
-    prev(selectorList, rule)
+    prev(selector, rule)
 
-- `selectorList` is a comma-separated string containing one or more CSS selectors
+- `selector` is a comma-separated string containing one or more CSS selectors
 - `rule` is a semicolon-separated string containing one or more CSS declarations
 
 ### Example
@@ -24,19 +24,19 @@ License: MIT
 
 */
 
-function prev(selectorList, rule) {
+function prev(selector, rule) {
 
-  var tag = document.querySelectorAll(selectorList)
+  var tag = document.querySelectorAll(selector)
   var style = ''
   var count = 0
 
   for (var i = 0; i < tag.length; i++) {
 
-    var attr = btoa(selectorList).replace(/=/g, '')
+    var attr = selector.replace(/\W+/g, '')
 
     tag[i].previousElementSibling.setAttribute('data-prev-' + attr, count)
 
-    style += '\n/* ' + selectorList + ':prev */\n'
+    style += '\n/* ' + selector + ':prev */\n'
              + '[data-prev-' + attr + '="' + count + '"] {\n'
              + '  ' + rule + '\n'
              + '}\n'

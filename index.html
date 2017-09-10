@@ -194,37 +194,37 @@
 
 <p>An example of a common mixin template might look like this:</p>
 
-<pre>function mixin(selectorList, rule) {
+<pre>function mixin(selector, rule) {
 
-  // Find all tags in document matching selector list
-  var tag = document.querySelectorAll(selectorList)
+  // Find tags in document matching selector
+  var tag = document.querySelectorAll(selector)
 
-  // Start with an empty string for the style
+  // Begin with an empty style
   var style = ''
 
-  // Being counting tags at 0
+  // Begin counting matching tags at 0
   var count = 0
 
-  // For each tag in the document matching our selector list
-  for (var i = 0; i &lt; tag.length; i++) {
+  // For each tag matching our selector
+  for (var i=0; i&lt;tag.length; i++) {
 
-    // Create an identifier based on the selector
-    var attr = btoa(selectorList).replace(/=/g, '')
+    // Create an identifier based on the selector used
+    var attr = selector.replace(/\W+/g, '')
 
-    // Mark tag with the name of our mixin, the identifier, and tag count
+    // Mark tag with a custom attribute containing identifier and count
     tag[i].setAttribute('data-mixin-' + attr, count)
 
-    // Add a new CSS rule based on the attribute and supplied CSS to our style
+    // Add a copy of the CSS rule to the style using a selector for this tag's unique attribute
     style += '\n[data-mixin-' + attr + '="' + count + '"] {\n'
              + '  ' + rule + '\n'
              + '}\n'
 
-    // Increment the tag counter
+    // Increment the tag counter by +1
     count++
 
   }
 
-  // return all generated styles for the tag(s), selector(s), and rule(s) given
+  // Return all generated styles as CSS text
   return style
 
 }</pre>
@@ -393,10 +393,9 @@
   <li><a href=https://tomhodgins.github.io/reprocss/test/parent-selector-mixin.html>Prev Selector Mixin Demo</a>
 </ul>
 
-
 <h3 id=closest-selector-mixin>Closest Selector Mixin</h3>
 
-<p>This mixin lets you define a CSS selector list and a second CSS selector, and apply a CSS rule to the closest ancestor node matching the second selector.</p>
+<p>This mixin lets CSS authors apply styles to the nearest element matching a CSS selector to another element matching a given CSS selector. You can use this to find the nearest matching ancestor.</p>
 
 <h4>syntax</h4>
 
@@ -414,5 +413,24 @@
 <ul>
   <li><a href=https://tomhodgins.github.io/reprocss/test/closest-selector-mixin.html>Closest Selector Mixin Demo</a>
 
+<h3 id=ancestor-selector-mixin>Ancestor Selector Mixin</h3>
+
+<p>This mixin lets CSS authors apply styles to all ancestor elements matching a CSS selector to another element matching a given CSS selector. You can use this to style all matching ancestors.</p>
+
+<h4>syntax</h4>
+
+<pre>ancestor('#start', '.target', `border-color: lime`)</pre>
+
+<h4>output</h4>
+
+<pre>/* #start:ancestor(.target) */
+[data-ancestor-unique="0"] {
+  border-color: lime;
+}</pre>
+
+<h4>demo</h4>
+
+<ul>
+  <li><a href=https://tomhodgins.github.io/reprocss/test/ancestor-selector-mixin.html>Ancestor Selector Mixin Demo</a>
 
 <footer>Made with &hearts; by <a href=http://twitter.com/innovati>@innovati</a></footer>

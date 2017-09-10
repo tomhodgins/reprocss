@@ -132,8 +132,7 @@ Currently this plugin only supports `<style>` tags, but it may be possible to su
 - [Regex Search on Attribute Value](https://codepen.io/tomhodgins/pen/MoQmdY)
 - [Cursor Tracking](https://codepen.io/tomhodgins/pen/MoQmLY)
 - [Scalable Iframe](https://codepen.io/tomhodgins/pen/awqWNz)
-
-- [View reproCSS demos on CodePen](https://codepen.io/search/pens/?q=reprocss)
+- [**View more reproCSS demos on CodePen**](https://codepen.io/search/pens/?q=reprocss)
 
 ## Mixins
 
@@ -142,37 +141,37 @@ Writing mixins for reproCSS is easy, any JavaScript function that outputs code t
 An example of a common mixin template might look like this:
 
 ```javascript
-function mixin(selectorList, rule) {
+function mixin(selector, rule) {
 
-  // Find all tags in document matching selector list
-  var tag = document.querySelectorAll(selectorList)
+  // Find tags in document matching selector
+  var tag = document.querySelectorAll(selector)
 
-  // Start with an empty string for the style
+  // Begin with an empty style
   var style = ''
 
-  // Being counting tags at 0
+  // Begin counting matching tags at 0
   var count = 0
 
-  // For each tag in the document matching our selector list
+  // For each tag matching our selector
   for (var i=0; i<tag.length; i++) {
 
-    // Create an identifier based on the selector
-    var attr = btoa(selectorList).replace(/=/g, '')
+    // Create an identifier based on the selector used
+    var attr = selector.replace(/\W+/g, '')
 
-    // Mark tag with the name of our mixin, the identifier, and tag count
+    // Mark tag with a custom attribute containing identifier and count
     tag[i].setAttribute('data-mixin-' + attr, count)
 
-    // Add a new CSS rule based on the attribute and supplied CSS to our style
+    // Add a copy of the CSS rule to the style using a selector for this tag's unique attribute
     style += '\n[data-mixin-' + attr + '="' + count + '"] {\n'
              + '  ' + rule + '\n'
              + '}\n'
 
-    // Increment the tag counter
+    // Increment the tag counter by +1
     count++
 
   }
 
-  // return all generated styles for the tag(s), selector(s), and rule(s) given
+  // Return all generated styles as CSS text
   return style
 
 }
@@ -187,7 +186,7 @@ This mixin lets you to define an aspect ratio for elements.
 #### syntax
 
 ```javascript
-${aspectRatio('iframe', 16/9)}
+aspectRatio('iframe', 16/9)
 ```
 
 #### output
@@ -211,9 +210,9 @@ This mixin lets you use XPath as a selector for CSS rules.
 #### syntax
 
 ```javascript
-${xpath('//*', `
+xpath('//*', `
   border: 1px solid red;
-`)}
+`)
 ```
 
 #### output
@@ -243,7 +242,7 @@ This mixin lets you choose between auto-expanding an element's width and height 
 #### syntax
 
 ```javascript
-${autoExpand('textarea', 'height')}
+autoExpand('textarea', 'height')
 ```
 
 #### output
@@ -264,7 +263,7 @@ This mixin lets you define a 'container' using a CSS selector, run a JavaScript 
 #### syntax
 
 ```javascript
-${container('div', 'this.offsetWidth > 500', 'span', 'background: lime;')}
+container('div', 'this.offsetWidth > 500', 'span', 'background: lime;')
 ```
 
 #### output
@@ -288,11 +287,11 @@ This mixin lets you define a CSS selector list, and to output CSS rules with JS 
 #### syntax
 
 ```javascript
-${scoped('div', `
+scoped('div', `
   margin: 1em;
   background: lime;
   height: eval(this.offsetWidth / (16/9))px;
-`)}
+`)
 ```
 
 #### output
@@ -318,7 +317,7 @@ This mixin lets you define a CSS selector list and apply a CSS rule to the paren
 #### syntax
 
 ```javascript
-${parent('li', 'border: 1px solid red;')}
+parent('li', 'border: 1px solid red;')
 ```
 
 #### output
@@ -342,7 +341,7 @@ This mixin lets you define a CSS selector list and apply a CSS rule to the previ
 #### syntax
 
 ```javascript
-${prev('li:nth-of-type(2)', 'background: lime;')}
+prev('li:nth-of-type(2)', 'background: lime;')
 ```
 
 #### output
@@ -358,14 +357,15 @@ ${prev('li:nth-of-type(2)', 'background: lime;')}
 
 - [Prev Selector Mixin Demo](https://tomhodgins.github.io/reprocss/test/parent-selector-mixin.html)
 
+
 ### Closest Selector Mixin
 
-This mixin lets you define a CSS selector list and a second CSS selector, and apply a CSS rule to the closest ancestor node matching the second selector.
+This mixin lets CSS authors apply styles to the nearest element matching a CSS selector to another element matching a given CSS selector. You can use this to find the nearest matching ancestor.
 
 #### syntax
 
 ```javascript
-${closest('#start', '.target', `border-color: lime`)}
+closest('#start', '.target', `border-color: lime`)
 ```
 
 #### output
@@ -381,5 +381,64 @@ ${closest('#start', '.target', `border-color: lime`)}
 
 - [Closest Selector Mixin Demo](https://tomhodgins.github.io/reprocss/test/closest-selector-mixin.html)
 
+
+### Ancestor Selector Mixin
+
+This mixin lets CSS authors apply styles to all ancestor elements matching a CSS selector to another element matching a given CSS selector. You can use this to style all matching ancestors.
+
+#### syntax
+
+```javascript
+ancestor('#start', '.target', `border-color: lime`)
+```
+
+#### output
+
+```css
+/* #start:ancestor(.target) */
+[data-ancestor-unique="0"] {
+  border-color: lime;
+}
+```
+
+
+## code
+
+```javascript
+function ancestor(selector, ancestor, rule) {
+
+  var tag = document.querySelectorAll(ancestor)
+  var style = ''
+  var count = 0
+
+  for (var i=0; i<tag.length; i++) {
+
+    var descendant = tag[i].querySelector(selector)
+
+    if (descendant) {
+
+      var attr = (selector+ancestor).replace(/\W+/g, '')
+
+      tag[i].setAttribute('data-ancestor-' + attr, count)
+
+      style += '\n/* ' + selector + ':ancestor(' + ancestor + ') */\n'
+             + '[data-ancestor-' + attr + '="' + count + '"] {\n'
+             + '  ' + rule + '\n'
+             + '}\n'
+
+      count ++
+
+    }
+
+  }
+
+  return style
+
+}
+```
+
+## demo
+
+- [Ancestor Selector Mixin Demo](https://tomhodgins.github.io/reprocss/test/ancestor-selector-mixin.html)
 
 > Made with ♥ by [@innovati](http://twitter.com/innovati)
