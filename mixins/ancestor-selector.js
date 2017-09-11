@@ -1,17 +1,17 @@
 /*
 
 # Ancestor Selector Mixin for reproCSS
-## version 0.0.8
+## version 0.0.9
 
 This mixin lets CSS authors apply styles to all ancestor elements matching a CSS selector to another element matching a given CSS selector. You can use this to style all matching ancestors.
 
 ### Syntax
 
-    ancestor(ancestor, selector, rule)
+    ancestor(selector, ancestor, rule)
 
+- `selector` is a CSS selector
 - `ancestor` is a CSS selector
-- `selector` is a comma-separated string containing one or more CSS selectors
-- `rule` is a semicolon-separated string containing one or more CSS declarations
+- `rule` is one or more CSS declarations separated by semicolons
 
 ### Example
 

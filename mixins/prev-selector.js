@@ -1,7 +1,7 @@
 /*
 
 # Prev Selector Mixin for reproCSS
-## version 0.0.8
+## version 0.0.9
 
 Apply CSS styles to the directly preceding sibling of HTML elements matching a CSS selector.
 
@@ -9,8 +9,8 @@ Apply CSS styles to the directly preceding sibling of HTML elements matching a C
 
     prev(selector, rule)
 
-- `selector` is a comma-separated string containing one or more CSS selectors
-- `rule` is a semicolon-separated string containing one or more CSS declarations
+- `selector` is a CSS selector
+- `rule` is one or more CSS declarations separated by semicolons
 
 ### Example
 

@@ -1,7 +1,7 @@
 /*
 
 # Scoped JS Interopation Mixin for reproCSS
-## version 0.0.8
+## version 0.0.9
 
 Evaluate JavaScript from the context of each HTML element that matches the supplied CSS selector list.
 
@@ -9,8 +9,8 @@ Evaluate JavaScript from the context of each HTML element that matches the suppl
 
     scoped(selector, rule)
 
-- `selector` is a comma-separated string containing one or more CSS selectors
-- `rule` is a semicolon-separated string containing one or more CSS declarations
+- `selector` is a comma-separated string of one or more CSS selectors
+- `rule` is one or more CSS declarations separated by semicolons
 
 ### Example
 

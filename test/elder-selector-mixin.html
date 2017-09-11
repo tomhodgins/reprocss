@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>Elder Selector mixin for reproCSS</title>
+
+<h1>Elder Selector Mixin Test</h1>
+
+<ul>
+  <li>item 1
+  <li>item 2
+  <li>item 3
+  <li class=target>item 4
+  <li>item 5
+</ul>
+
+<style process=auto>
+
+  ${elder('.target', 'background: lime')}
+
+</style>
+
+<script src=../mixins/elder-selector.js></script>
+<script src=../reprocss.js></script>

@@ -1,7 +1,7 @@
 /*
 
 # Aspect Ratio Mixin for reproCSS
-## version 0.0.8
+## version 0.0.9
 
 Define a height for HTML elements based on the element's width and a supplied aspect ratio.
 
@@ -9,8 +9,8 @@ Define a height for HTML elements based on the element's width and a supplied as
 
     aspectRatio(selector, ratio)
 
-- `selector` is a comma-separated string containing one or more CSS selectors
-- `ratio` is a number expressed as `width/height` or a number
+- `selector` is a CSS selector
+- `ratio` is a ratio expressed as `width/height` or a number
 
 ### Example
 

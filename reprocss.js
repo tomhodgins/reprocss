@@ -1,7 +1,7 @@
 /*
 
   # reproCSS
-  ## version 0.0.8
+  ## version 0.0.9
 
   reproCSS is a flexible CSS reprocessor that uses `<style>` tags and a `process=""` attribute.
 

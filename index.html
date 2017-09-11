@@ -181,10 +181,7 @@
   <li><a href=https://codepen.io/tomhodgins/pen/MoQmdY>Regex Search on Attribute Value</a>
   <li><a href=https://codepen.io/tomhodgins/pen/MoQmLY>Cursor Tracking</a>
   <li><a href=https://codepen.io/tomhodgins/pen/awqWNz>Scalable Iframe</a>
-</ul>
-
-<ul>
-  <li><a href=https://codepen.io/search/pens/?q=reprocss>View reproCSS demos on CodePen</a>
+  <li><strong><a href=https://codepen.io/search/pens/?q=reprocss>View reproCSS demos on CodePen</a></strong>
 </ul>
 
 
@@ -239,7 +236,7 @@
 
 <h4>syntax</h4>
 
-<pre>${aspectRatio('iframe', 16/9)}</pre>
+<pre>aspectRatio('iframe', 16/9)</pre>
 
 <h4>output</h4>
 
@@ -261,9 +258,9 @@
 
 <h4>syntax</h4>
 
-<pre>${xpath('//*', `
+<pre>xpath('//*', `
   border: 1px solid red;
-`)}</pre>
+`)</pre>
 
 <h4>outpue</h4>
 
@@ -290,7 +287,7 @@
 
 <h4>syntax</h4>
 
-<pre>${autoExpand('textarea', 'height')}</pre>
+<pre>autoExpand('textarea', 'height')</pre>
 
 <h4>output</h4>
 
@@ -309,7 +306,7 @@
 
 <h4>syntax</h4>
 
-<pre>${container('div', 'this.offsetWidth > 500', 'span', 'background: lime;')}</pre>
+<pre>container('div', 'this.offsetWidth > 500', 'span', 'background: lime;')</pre>
 
 <h4>output</h4>
 
@@ -330,11 +327,11 @@
 
 <h4>syntax</h4>
 
-<pre>${scoped('div', `
+<pre>scoped('div', `
   margin: 1em;
   background: lime;
   height: eval(this.offsetWidth / (16/9))px;
-`)}</pre>
+`)</pre>
 
 <h4>output</h4>
 
@@ -357,7 +354,7 @@
 
 <h4>syntax</h4>
 
-<pre>${parent('li', 'border: 1px solid red;')}</pre>
+<pre>parent('li', 'border: 1px solid red;')</pre>
 
 <h4>output</h4>
 
@@ -378,7 +375,7 @@
 
 <h4>syntax</h4>
 
-<pre>${prev('li:nth-of-type(2)', 'background: lime;')}</pre>
+<pre>prev('li:nth-of-type(2)', 'background: lime;')</pre>
 
 <h4>output</h4>
 
@@ -399,7 +396,7 @@
 
 <h4>syntax</h4>
 
-<pre>${closest('#start', '.target', `border-color: lime`)}</pre>
+<pre>closest('#start', '.target', `border-color: lime`)</pre>
 
 <h4>output</h4>
 
@@ -412,6 +409,7 @@
 
 <ul>
   <li><a href=https://tomhodgins.github.io/reprocss/test/closest-selector-mixin.html>Closest Selector Mixin Demo</a>
+</ul>
 
 <h3 id=ancestor-selector-mixin>Ancestor Selector Mixin</h3>
 
@@ -432,5 +430,26 @@
 
 <ul>
   <li><a href=https://tomhodgins.github.io/reprocss/test/ancestor-selector-mixin.html>Ancestor Selector Mixin Demo</a>
+</ul>
+
+<h3 id=elder-selector-mixin>Elder Selector Mixin</h3>
+
+<p>This mixin lets CSS authors apply styles to all elder siblings of elements matching a CSS selector.</p>
+
+<h4>syntax</h4>
+
+<pre>elder('.target', 'background: lime;')</pre>
+
+<h4>output</h4>
+
+<pre>[data-elder-unique="0"] {
+  background: lime;
+}</pre>
+
+<h4>demo</h4>
+
+<ul>
+  <li><a href=https://tomhodgins.github.io/reprocss/test/elder-selector-mixin.html>Elder Selector Mixin Demo</a>
+</ul>
 
 <footer>Made with &hearts; by <a href=http://twitter.com/innovati>@innovati</a></footer>

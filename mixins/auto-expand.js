@@ -1,7 +1,7 @@
 /*
 
 # AutoExpand Mixin for reproCSS
-## version 0.0.8
+## version 0.0.9
 
 Automatically expand an HTML element's `width` or `height` to match its `scrollWidth`, `scrollHeight`, or both.
 
@@ -9,7 +9,7 @@ Automatically expand an HTML element's `width` or `height` to match its `scrollW
 
     autoExpand(selector, direction)
 
-- `selector` is a comma-separated string containing one or more CSS selectors
+- `selector` is a CSS selector
 - `direction` is a string matching `width`, `height`, or `both`
 
 ### Example

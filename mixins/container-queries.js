@@ -1,7 +1,7 @@
 /*
 
 # Container Queries Mixin for reproCSS
-## version 0.0.8
+## version 0.0.9
 
 Define a 'container' using a CSS selector, run a JavaScript test on matching HTML elements, and apply CSS styles to the container or its child elements if the test resolves `true`.
 
@@ -9,10 +9,10 @@ Define a 'container' using a CSS selector, run a JavaScript test on matching HTM
 
     container(selector, test, childSelector, rule)
 
-- `selector` is a comma-separated string containing one or more CSS selectors
-- `test` is a JavaScript test that should evaluate to `true` or `false`
-- `childSelector` is a comma-separated string containing one or more CSS selectors
-- `rule` is a semicolon-separated string containing one or more CSS declarations
+- `selector` is a CSS selector
+- `test` is a JavaScript test that evaluates to `true` or `false`
+- `childSelector` is a CSS selector
+- `rule` is one or more CSS declarations separated by semicolons
 
 ### Example
 

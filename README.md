@@ -405,4 +405,26 @@ ancestor('#start', '.target', `border-color: lime`)
 
 - [Ancestor Selector Mixin Demo](https://tomhodgins.github.io/reprocss/test/ancestor-selector-mixin.html)
 
+### Elder Selector Mixin
+
+This mixin lets CSS authors apply styles to all elder siblings of elements matching a CSS selector.
+
+#### syntax
+
+```javascript
+elder('.target', 'background: lime;')
+```
+
+### output
+
+```css
+[data-elder-unique="0"] {
+  background: lime;
+}
+```
+
+## demo
+
+- [Elder Selector Mixin Demo](https://tomhodgins.github.io/reprocss/test/elder-selector-mixin.html)
+
 > Made with ♥ by [@innovati](http://twitter.com/innovati)

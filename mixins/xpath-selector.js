@@ -1,7 +1,7 @@
 /*
 
 # XPath Selector Mixin for reproCSS
-## version 0.0.8
+## version 0.0.9
 
 Apply CSS styles to HTML elements that match an XPath selector.
 
@@ -9,8 +9,8 @@ Apply CSS styles to HTML elements that match an XPath selector.
 
     xpath(selector, rule)
 
-- `selector` is a comma-separated string containing an XPath selector
-- `rule` is a semicolon-separated string containing one or more CSS declarations
+- `selector` is an XPath selector
+- `rule` is one or more CSS declarations separated by semicolons
 
 ### Example
 

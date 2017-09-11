@@ -1,7 +1,7 @@
 /*
 
 # Parent Selector Mixin for reproCSS
-## version 0.0.8
+## version 0.0.9
 
 Apply CSS styles to the direct parent of HTML elements matching a CSS selector.
 
@@ -9,8 +9,8 @@ Apply CSS styles to the direct parent of HTML elements matching a CSS selector.
 
     parent(selector, rule)
 
-- `selector` is a comma-separated string containing one or more CSS selectors
-- `rule` is a semicolon-separated string containing one or more CSS declarations
+- `selector` is CSS selector
+- `rule` is one or more CSS declarations separated by semicolons
 
 ### Example
 
