@@ -34,7 +34,7 @@ function elder(selector, rule) {
 
     var attr = selector.replace(/\W+/g, '')
     var sibling = tag[i].parentNode.getElementsByTagName('*')
-    var tagIndex= [].indexOf.call(sibling, tag[i])
+    var tagIndex = [].indexOf.call(sibling, tag[i])
 
     for (var j=0; j<sibling.length; j++) {
 
