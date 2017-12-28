@@ -1,7 +1,7 @@
 /*
 
 # Container Queries Mixin for reproCSS
-## version 0.0.9
+## version 0.0.10
 
 Define a 'container' using a CSS selector, run a JavaScript test on matching HTML elements, and apply CSS styles to the container or its child elements if the test resolves `true`.
 

@@ -1,7 +1,7 @@
 /*
 
 # XPath Selector Mixin for reproCSS
-## version 0.0.9
+## version 0.0.10
 
 Apply CSS styles to HTML elements that match an XPath selector.
 
@@ -48,7 +48,7 @@ function xpath(selector, rule) {
 
     var attr = selector.replace(/\W+/g, '')
 
-    tag[j].setAttribute('data-xpath-'+attr, count)
+    tag[j].setAttribute('data-xpath-' + attr, count)
 
     style += '\n/*\n\n' + selector + ' {\n  ' + rule + '\n}\n\n*/\n'
              + '[data-xpath-' + attr + '="' + count + '"] {\n'

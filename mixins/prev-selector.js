@@ -1,7 +1,7 @@
 /*
 
 # Prev Selector Mixin for reproCSS
-## version 0.0.9
+## version 0.0.10
 
 Apply CSS styles to the directly preceding sibling of HTML elements matching a CSS selector.
 

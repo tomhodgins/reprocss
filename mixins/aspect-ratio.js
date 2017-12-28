@@ -1,7 +1,7 @@
 /*
 
 # Aspect Ratio Mixin for reproCSS
-## version 0.0.9
+## version 0.0.10
 
 Define a height for HTML elements based on the element's width and a supplied aspect ratio.
 

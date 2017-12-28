@@ -1,7 +1,7 @@
 /*
 
 # Ancestor Selector Mixin for reproCSS
-## version 0.0.9
+## version 0.0.10
 
 This mixin lets CSS authors apply styles to all ancestor elements matching a CSS selector to another element matching a given CSS selector. You can use this to style all matching ancestors.
 

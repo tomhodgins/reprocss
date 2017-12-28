@@ -1,7 +1,7 @@
 /*
 
 # Scoped JS Interopation Mixin for reproCSS
-## version 0.0.9
+## version 0.0.10
 
 Evaluate JavaScript from the context of each HTML element that matches the supplied CSS selector list.
 
@@ -49,7 +49,7 @@ function scoped(selector, rule) {
              + '  ' + scopedRule + '\n'
              + '}\n'
 
-      count++
+    count++
 
   }
 

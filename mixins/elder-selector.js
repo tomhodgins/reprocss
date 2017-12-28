@@ -1,7 +1,7 @@
 /*
 
 # Elder Selector Mixin for reproCSS
-## version 0.0.9
+## version 0.0.10
 
 This mixin lets CSS authors apply styles to all elder siblings of elements matching a CSS selector.
 
@@ -47,6 +47,7 @@ function elder(selector, rule) {
         style += '\n[data-elder-' + attr + '="' + count + '"] {\n'
                  + '  ' + rule + '\n'
                  + '}\n'
+
         count++
 
       } else {
