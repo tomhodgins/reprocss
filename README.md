@@ -39,6 +39,13 @@ Include the `reprocss.js` JavaScript plugin in your HTML:
 <script src="reprocss.js"></script>
 ```
 
+### CDN
+
+Include the `reprocss.js` in your HTML via CDN:
+```hmtl
+<script src="https://cdn.jsdelivr.net/npm/reprocss/reprocss.js"></script>
+```
+
 ### npm
 
 If you are using reproCSS on NPM you can include it in your JS modules with a line like this:
